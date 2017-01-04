@@ -48,7 +48,45 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 20
     }
-    
+
+    //セルを表示しようとする時の動作を設定する
+    /**
+     * willDisplay(UITableViewDelegateのメソッド)に関して
+     *
+     * 参考: Cocoa API解説(macOS/iOS) tableView:willDisplayCell:forRowAtIndexPath:
+     * https://goo.gl/Ykp30Q
+     */
+    internal func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+
+        /**
+         * CoreAnimationを利用したアニメーションをセルの表示時に付与する（拡大とアルファの重ねがけ）
+         *
+         * 参考:【iOS Swift入門 #185】Core Animationでアニメーションの加速・減速をする
+         * http://swift-studying.com/blog/swift/?p=1162
+         */
+
+        //アニメーションの作成
+        let groupAnimation = CAAnimationGroup()
+        groupAnimation.fillMode = kCAFillModeBackwards
+        groupAnimation.duration = 0.16
+        groupAnimation.beginTime = CACurrentMediaTime() + 0.16
+        groupAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
+        
+        //透過を変更するアニメーション
+        let opacityAnimation = CABasicAnimation(keyPath: "opacity")
+        opacityAnimation.fromValue = 0.0
+        opacityAnimation.toValue = 1.0
+         
+        //作成した個別のアニメーションをグループ化
+        groupAnimation.animations = [opacityAnimation]
+         
+        //セルのLayerにアニメーションを追加
+        cell.layer.add(groupAnimation, forKey: nil)
+         
+        //アニメーション終了後は元のサイズになるようにする
+        cell.layer.transform = CATransform3DIdentity
+    }
+
     /* (UITableViewDataSource) */
 
     //表示するセルの中身を設定する
@@ -68,7 +106,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell?.selectionStyle = UITableViewCellSelectionStyle.none
         return cell!
     }
-    
+
+    /* (UIScrollViewDelegate) */
+
     //スクロールが検知された時に実行される処理
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
@@ -78,7 +118,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             //スクロール終了時のy座標を取得する
             let currentPoint = scrollView.contentOffset
 
-            //TEMPORARY: Y軸方向がマイナスの場合には背景画像がバウンズするように制約を変更
+            //Y軸方向がマイナスの場合には背景画像がバウンズするように制約を変更
             if currentPoint.y < 0 {
                 topImageConstraint.constant = -currentPoint.y * Settings.parallaxRatio
             }

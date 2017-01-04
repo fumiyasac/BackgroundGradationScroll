@@ -534,6 +534,7 @@
 				DE2CD31D1E1938100098B06C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DE2CD31E1E1938100098B06C /* Build configuration list for PBXNativeTarget "BackgroundGradationScrollTests" */ = {
 			isa = XCConfigurationList;
@@ -542,6 +543,7 @@
 				DE2CD3201E1938100098B06C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DE2CD3211E1938100098B06C /* Build configuration list for PBXNativeTarget "BackgroundGradationScrollUITests" */ = {
 			isa = XCConfigurationList;
@@ -550,6 +552,7 @@
 				DE2CD3231E1938100098B06C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
