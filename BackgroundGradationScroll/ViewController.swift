@@ -35,7 +35,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         //テーブルビューのセットアップ
         restaurantTableView.delegate = self
         restaurantTableView.dataSource = self
-        restaurantTableView.rowHeight = 240
+        restaurantTableView.rowHeight = 278
         
         //Xibのセットアップ
         let nibTableView: UINib = UINib(nibName: "RestaurantCell", bundle: nil)
@@ -58,6 +58,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
      */
     internal func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
 
+        let imageCell = cell as! RestaurantCell
+        setCellImageOffset(imageCell, indexPath: indexPath)
+        
         /**
          * CoreAnimationを利用したアニメーションをセルの表示時に付与する（拡大とアルファの重ねがけ）
          *
@@ -69,7 +72,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let groupAnimation = CAAnimationGroup()
         groupAnimation.fillMode = kCAFillModeBackwards
         groupAnimation.duration = 0.16
-        groupAnimation.beginTime = CACurrentMediaTime() + 0.16
+        groupAnimation.beginTime = CACurrentMediaTime() + 0.08
         groupAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
         
         //透過を変更するアニメーション
@@ -96,11 +99,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCell(withIdentifier: "RestaurantCell") as? RestaurantCell
         
         //仮のデータを設計してセルに表示させる
-        cell?.restaurantName.text = "Mexican Dinning"
-        cell?.restaurantThumbnail.image = UIImage(named: "sample")
-        cell?.restaurantOpen.text = "11:30 ~ 23:00"
-        cell?.restaurantLunchTime.text = "Lunch 11:30 ~ 14:00"
-        cell?.restaurantDetail.text = "このお店はタコスが絶品です。本場のタコスとテキーラで仕事帰りやランチタイムで最高の気分を味わって見ましょう！"
+        //cell?.restaurantName.text = "Mexican Dinning"
+        //cell?.restaurantThumbnail.image = UIImage(named: "sample")
+        //cell?.restaurantOpen.text = "11:30 ~ 23:00"
+        //cell?.restaurantLunchTime.text = "Lunch 11:30 ~ 14:00"
+        //cell?.restaurantDetail.text = "このお店はタコスが絶品です。本場のタコスとテキーラで仕事帰りやランチタイムで最高の気分を味わって見ましょう！"
 
         cell?.accessoryType = UITableViewCellAccessoryType.none
         cell?.selectionStyle = UITableViewCellSelectionStyle.none
@@ -115,6 +118,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         //パララックスをするテーブルビューの場合
         if scrollView == restaurantTableView {
 
+            //画面に表示されているセルの画像のオフセット値を変更する
+            for indexPath in restaurantTableView.indexPathsForVisibleRows! {
+                setCellImageOffset(restaurantTableView.cellForRow(at: indexPath) as! RestaurantCell, indexPath: indexPath)
+            }
+            
             //スクロール終了時のy座標を取得する
             let currentPoint = scrollView.contentOffset
 
@@ -126,8 +134,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    /* (Fileprivate Functions) */
+    
+    //UITableViewCell内のオフセット値を再計算して視差効果をつける
+    fileprivate func setCellImageOffset(_ cell: RestaurantCell, indexPath: IndexPath) {
+        
+        let cellFrame = restaurantTableView.rectForRow(at: indexPath)
+        let cellFrameInTable = restaurantTableView.convert(cellFrame, to: restaurantTableView.superview)
+        let cellOffset = cellFrameInTable.origin.y + cellFrameInTable.size.height
+        let tableHeight = restaurantTableView.bounds.size.height + cellFrameInTable.size.height
+        let cellOffsetFactor = cellOffset / tableHeight
+        
+        cell.setBackgroundOffset(cellOffsetFactor)
     }
 
     //グラデーションの設定メソッド
@@ -150,6 +168,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         //グラデーションレイヤーをビューの一番下に配置
         backgroundImageView.layer.insertSublayer(gradientLayer, at: 0)
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
 
 }

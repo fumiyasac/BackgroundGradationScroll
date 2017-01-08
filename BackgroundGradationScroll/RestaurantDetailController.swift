@@ -8,6 +8,11 @@
 
 import UIKit
 
+/**
+ * ヘッダーのバウンスに関する実装参考
+ * http://blog.matthewcheok.com/design-teardown-stretchy-headers/
+ */
+
 class RestaurantDetailController: UITableViewController {
 
     //バウンドするヘッダーを作成するためのメンバ変数
@@ -33,7 +38,7 @@ class RestaurantDetailController: UITableViewController {
         tableView.contentInset = UIEdgeInsets(top: kTableHeaderHeight, left: 0, bottom: 0, right: 0)
         tableView.contentOffset = CGPoint(x: 0, y: -kTableHeaderHeight)
         updateTableViewHeader()
-        
+
         //ヘッダー内に設定したイメージビューにGestureRecognizerをつける
         targetHeaderImageView.isUserInteractionEnabled = true
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(RestaurantDetailController.changeTargetHeaderImageView(sender:)))

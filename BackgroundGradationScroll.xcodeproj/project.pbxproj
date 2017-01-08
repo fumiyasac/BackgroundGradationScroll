@@ -84,6 +84,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DE2B22761E1EAA810034C106 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				DEC401B41E1E51CD00FFDE71 /* RestaurantDetailCell.swift */,
+			);
+			name = Detail;
+			sourceTree = "<group>";
+		};
 		DE2CD2EA1E19380F0098B06C = {
 			isa = PBXGroup;
 			children = (
@@ -141,8 +149,8 @@
 		DE2CD3241E1943BF0098B06C /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				DE2B22761E1EAA810034C106 /* Detail */,
 				DEC401B61E1E51DE00FFDE71 /* List */,
-				DEC401B41E1E51CD00FFDE71 /* RestaurantDetailCell.swift */,
 			);
 			name = Components;
 			sourceTree = "<group>";
