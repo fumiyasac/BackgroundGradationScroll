@@ -86,9 +86,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="backgroundImageView" destination="BJn-jR-6qe" id="6hJ-5K-f5g"/>
-                        <outlet property="bottomImageConstraint" destination="a4n-5b-2mL" id="fO4-jX-Pba"/>
                         <outlet property="restaurantTableView" destination="gz4-Aa-lnb" id="ozy-Ev-hxa"/>
-                        <outlet property="topImageConstraint" destination="UP3-g3-AUf" id="Ot0-bh-qqH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

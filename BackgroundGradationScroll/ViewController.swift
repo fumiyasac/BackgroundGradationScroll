@@ -21,11 +21,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //UIパーツの配置
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var restaurantTableView: UITableView!
-    
-    //AutoLayoutの制約
-    @IBOutlet weak var topImageConstraint: NSLayoutConstraint!
-    @IBOutlet weak var bottomImageConstraint: NSLayoutConstraint!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -121,14 +117,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             //画面に表示されているセルの画像のオフセット値を変更する
             for indexPath in restaurantTableView.indexPathsForVisibleRows! {
                 setCellImageOffset(restaurantTableView.cellForRow(at: indexPath) as! RestaurantCell, indexPath: indexPath)
-            }
-            
-            //スクロール終了時のy座標を取得する
-            let currentPoint = scrollView.contentOffset
-
-            //Y軸方向がマイナスの場合には背景画像がバウンズするように制約を変更
-            if currentPoint.y < 0 {
-                topImageConstraint.constant = -currentPoint.y * Settings.parallaxRatio
             }
         }
         
