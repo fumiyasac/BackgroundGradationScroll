@@ -13,6 +13,8 @@ class CategoryBarCell: UICollectionViewCell {
     //UIパーツの配置
     @IBOutlet weak var categoryBarName: UILabel!
 
+    var categoryIndex: Int!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }

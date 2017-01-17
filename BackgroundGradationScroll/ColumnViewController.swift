@@ -17,6 +17,12 @@ struct CategoryBarMock {
 
 class ColumnViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIPageViewControllerDataSource {
 
+    //上タブのサイズを格納するメンバ変数
+    fileprivate var pageTabItemsWidth: CGFloat = 0.0
+    
+    //
+    fileprivate var initialStateItemIndex: Int = 6
+    
     //UIパーツの配置
     @IBOutlet weak var categoryBarCollectionView: UICollectionView!
     @IBOutlet weak var pageScrollContentsContainerView: UIView!
@@ -26,6 +32,11 @@ class ColumnViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     //ページングして表示させるViewControllerを保持する
     var viewControllerLists = [ColumnListController]()
+    
+    //
+    override func viewDidAppear(_ animated: Bool) {
+        categoryBarCollectionView.scrollToItem(at: IndexPath(item: 6, section: 0), at: .centeredHorizontally, animated: false)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +66,20 @@ class ColumnViewController: UIViewController, UICollectionViewDelegate, UICollec
         //最初に表示する画面として配列の先頭のViewControllerを設定する
         pageViewController!.setViewControllers([viewControllerLists[0]], direction: .forward, animated: false, completion: nil)
     }
+    
+    internal func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        //(ロジックの参考)http://tech.vasily.jp/entry/tab_page_viewcontroller
+        //表示したい要素群のwidthを計算
+        if pageTabItemsWidth == 0.0 {
+            pageTabItemsWidth = floor(scrollView.contentSize.width / 3.0)
+        }
+
+        //スクロールした位置がしきい値を超えたら中央に戻す
+        if (scrollView.contentOffset.x <= 0.0) || (scrollView.contentOffset.x > pageTabItemsWidth * 2.0) {
+            scrollView.contentOffset.x = pageTabItemsWidth
+        }
+    }
 
     /* (UICollectionViewDelegate) */
     
@@ -67,17 +92,24 @@ class ColumnViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     //セクションのアイテム数を設定する
     internal func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return CategoryBarMock.getCategoryBarMock().count
+
+        //要素数の3倍を持っておく
+        //(ロジックの参考)http://tech.vasily.jp/entry/tab_page_viewcontroller
+        return CategoryBarMock.getCategoryBarMock().count * 3
     }
     
     //セルに表示する値を設定する
     internal func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
+        
         //セルの定義を行う
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryBarCell", for: indexPath) as! CategoryBarCell
 
         //カテゴリーの表示
-        cell.categoryBarName.text = CategoryBarMock.getCategoryBarMock()[indexPath.row]
+        let index = indexPath.row % CategoryBarMock.getCategoryBarMock().count
+        cell.categoryIndex = index
+        
+        cell.categoryBarName.text = CategoryBarMock.getCategoryBarMock()[index]
         return cell
     }
     
@@ -92,9 +124,11 @@ class ColumnViewController: UIViewController, UICollectionViewDelegate, UICollec
 
     //
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
-        print(indexPath)
-        categoryBarCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        
+        let cell = collectionView.cellForItem(at: indexPath) as! CategoryBarCell
+        print(cell.categoryIndex)
+        
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
     
     //セルの垂直方向の余白(margin)を設定する
