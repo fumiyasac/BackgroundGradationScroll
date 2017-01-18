@@ -37,41 +37,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NxS-eZ-erT">
-                                <rect key="frame" x="0.0" y="64" width="375" height="50"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="2hu-6M-Jrj"/>
-                                </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="io7-Mn-hvq">
-                                    <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells/>
-                            </collectionView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ioE-ls-ZZb">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hOY-Me-5gM">
                                 <rect key="frame" x="0.0" y="114" width="375" height="553"/>
                                 <connections>
                                     <segue destination="h0S-YY-6YY" kind="embed" id="wlj-Qn-Ia3"/>
                                 </connections>
                             </containerView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UyI-IP-me4">
+                                <rect key="frame" x="0.0" y="64" width="375" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="yMV-38-ZVH"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="NxS-eZ-erT" firstAttribute="leading" secondItem="qaB-E6-jtm" secondAttribute="leading" id="ECl-J8-Akc"/>
-                            <constraint firstAttribute="trailing" secondItem="NxS-eZ-erT" secondAttribute="trailing" id="HIj-Bi-tmW"/>
-                            <constraint firstItem="NxS-eZ-erT" firstAttribute="top" secondItem="LM0-gA-rKF" secondAttribute="bottom" id="YrV-9r-86t"/>
-                            <constraint firstItem="hOY-Me-5gM" firstAttribute="leading" secondItem="qaB-E6-jtm" secondAttribute="leading" id="c1m-ZU-49b"/>
-                            <constraint firstItem="hOY-Me-5gM" firstAttribute="top" secondItem="NxS-eZ-erT" secondAttribute="bottom" id="h0v-Cn-2jQ"/>
-                            <constraint firstItem="F1D-bj-Ggb" firstAttribute="top" secondItem="hOY-Me-5gM" secondAttribute="bottom" id="q9b-si-Pau"/>
-                            <constraint firstAttribute="trailing" secondItem="hOY-Me-5gM" secondAttribute="trailing" id="tzt-cV-WSf"/>
+                            <constraint firstAttribute="trailing" secondItem="UyI-IP-me4" secondAttribute="trailing" id="5rc-2k-jyL"/>
+                            <constraint firstItem="F1D-bj-Ggb" firstAttribute="top" secondItem="hOY-Me-5gM" secondAttribute="bottom" id="Ihg-SP-LKc"/>
+                            <constraint firstItem="UyI-IP-me4" firstAttribute="leading" secondItem="qaB-E6-jtm" secondAttribute="leading" id="Qrf-IU-JON"/>
+                            <constraint firstItem="hOY-Me-5gM" firstAttribute="leading" secondItem="qaB-E6-jtm" secondAttribute="leading" id="TMk-QG-TXH"/>
+                            <constraint firstItem="ioE-ls-ZZb" firstAttribute="leading" secondItem="qaB-E6-jtm" secondAttribute="leading" id="a8K-JS-aBr"/>
+                            <constraint firstItem="F1D-bj-Ggb" firstAttribute="top" secondItem="ioE-ls-ZZb" secondAttribute="bottom" id="bPp-Rd-YWu"/>
+                            <constraint firstItem="hOY-Me-5gM" firstAttribute="top" secondItem="UyI-IP-me4" secondAttribute="bottom" id="kqi-WR-7Md"/>
+                            <constraint firstItem="ioE-ls-ZZb" firstAttribute="top" secondItem="qaB-E6-jtm" secondAttribute="top" id="n5f-QQ-UzC"/>
+                            <constraint firstAttribute="trailing" secondItem="hOY-Me-5gM" secondAttribute="trailing" id="rPQ-kc-aod"/>
+                            <constraint firstAttribute="trailing" secondItem="ioE-ls-ZZb" secondAttribute="trailing" id="wuk-uB-6xu"/>
+                            <constraint firstItem="UyI-IP-me4" firstAttribute="top" secondItem="LM0-gA-rKF" secondAttribute="bottom" id="zTX-6w-w55"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Yqp-aL-Rsr"/>
                     <connections>
-                        <outlet property="categoryBarCollectionView" destination="NxS-eZ-erT" id="3Rx-Y6-EoY"/>
+                        <outlet property="backgroundCategoryImage" destination="ioE-ls-ZZb" id="ByD-eN-GN9"/>
+                        <outlet property="categoryBarScrollView" destination="UyI-IP-me4" id="v5G-ma-xEF"/>
                         <outlet property="pageScrollContentsContainerView" destination="hOY-Me-5gM" id="e0N-m5-66N"/>
                     </connections>
                 </viewController>

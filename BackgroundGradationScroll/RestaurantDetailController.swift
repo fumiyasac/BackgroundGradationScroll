@@ -305,7 +305,7 @@ class RestaurantDetailController: UITableViewController {
         
         /**
          * 下記のような計算式で位置を算出する：
-         * ★ (動くラベルのX座標位置) = (ボタンを入れたスクロールビューの幅 ÷ ボタン数 ÷ 2) + (ボタンを入れたスクロールビューの幅 ÷ ボタン数 × 現在のページ番号) - (ボタンに表示している文字の幅 ÷ 2)
+         * ★ (動くラベルのX座標位置) = (ボタンを入れたスクロールビューの幅 ÷ ボタン数 ÷ 2) + (ボタンを入れたスクロールビューの幅 ÷ 分割数 × 現在のページ番号) - (ボタンに表示している文字の幅 ÷ 2)
          */
         let positionX: Int = Int(scrollViewLayoutWidth / separateValue / 2) + Int(Int(scrollViewLayoutWidth / 3) * page) - Int(charWidth / 2)
         return positionX
