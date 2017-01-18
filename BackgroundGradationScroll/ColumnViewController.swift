@@ -148,7 +148,7 @@ class ColumnViewController: UIViewController, UIScrollViewDelegate, UIPageViewCo
         
         //現在位置のインデックスを変数:currentDisplayに保持してタブを移動させる
         currentDisplay = index!
-        moveFormNowButtonContentsScrollView(page: currentDisplay)
+        moveButtonScrollContents(page: currentDisplay)
         
         //インデックスの値に応じてコンテンツを動かす
         if index! <= 0 {
@@ -167,7 +167,7 @@ class ColumnViewController: UIViewController, UIScrollViewDelegate, UIPageViewCo
 
         //現在位置のインデックスを変数:currentDisplayに保持してタブを移動させる
         currentDisplay = index!
-        moveFormNowButtonContentsScrollView(page: index!)
+        moveButtonScrollContents(page: index!)
 
         //インデックスの値に応じてコンテンツを動かす
         if index! >= CategoryBarMock.getCategoryBarMock().count - 1 {
@@ -202,7 +202,7 @@ class ColumnViewController: UIViewController, UIScrollViewDelegate, UIPageViewCo
         currentDisplay = page
 
         pageViewController!.setViewControllers([viewControllerLists[page]], direction: targetDirection!, animated: true, completion: { finished in
-            self.moveFormNowButtonContentsScrollView(page: page)
+            self.moveButtonScrollContents(page: page)
         })
 
     }
@@ -210,7 +210,7 @@ class ColumnViewController: UIViewController, UIScrollViewDelegate, UIPageViewCo
     /* (Fileprivate Functions) */
     
     //ボタンのスクロールビューをスライドさせる
-    fileprivate func moveFormNowButtonContentsScrollView(page: Int) {
+    fileprivate func moveButtonScrollContents(page: Int) {
         
         //Case1: ボタンを内包しているスクロールビューの位置変更をする
         if page > 0 && page < (categoryButtonCount - 1) {
