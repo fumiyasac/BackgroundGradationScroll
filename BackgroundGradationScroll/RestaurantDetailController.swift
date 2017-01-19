@@ -161,6 +161,9 @@ class RestaurantDetailController: UITableViewController, UIViewControllerTransit
         
         //TODO: セルをそれぞれのセクションごとに作成する
         let cell = tableView.dequeueReusableCell(withIdentifier: "RestaurantDetailCell", for: indexPath)
+
+        cell.accessoryType = UITableViewCellAccessoryType.none
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
         return cell
     }
 

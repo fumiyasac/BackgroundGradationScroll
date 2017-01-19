@@ -83,6 +83,7 @@ class ImageHeaderTransition: NSObject, UIViewControllerAnimatedTransitioning {
             targetView.alpha = self.presenting ? 1 : 0
             
         }, completion:{ finished in
+
             transitionContext.completeTransition(true)
         })
     }

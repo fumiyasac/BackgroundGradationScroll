@@ -86,6 +86,7 @@
                     <connections>
                         <outlet property="backgroundImageView" destination="BJn-jR-6qe" id="6hJ-5K-f5g"/>
                         <outlet property="restaurantTableView" destination="gz4-Aa-lnb" id="ozy-Ev-hxa"/>
+                        <segue destination="xoc-Wx-C0X" kind="show" identifier="showRestaurantDetailAction" id="7aI-Vc-QgL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -169,6 +170,7 @@
                             <outlet property="delegate" destination="xoc-Wx-C0X" id="LO1-Xx-hU9"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="J3g-xf-GPa"/>
                     <connections>
                         <outlet property="targetHeaderImageView" destination="qiX-C9-m2I" id="2gZ-Fe-EhM"/>
                         <outlet property="targetHeaderScrollView" destination="lNX-rC-Ozw" id="D5K-jY-QCF"/>
@@ -176,7 +178,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YjW-s6-OjH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="940" y="123.68815592203899"/>
+            <point key="canvasLocation" x="929" y="124"/>
         </scene>
     </scenes>
     <resources>

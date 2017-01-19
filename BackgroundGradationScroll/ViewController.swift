@@ -140,6 +140,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             //遷移先のヘッダー画像に遷移元の画像を設定してカスタムトランジションを利用して遷移する
             restaurantDetail.firstDisplayImage = cell?.imageImplView.image
             restaurantDetail.transitioningDelegate = self
+
             self.present(restaurantDetail, animated: true, completion: nil)
         }
 
@@ -179,8 +180,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         transition.presenting = false
         return transition
     }
-    
-    
+
     /* (Fileprivate Functions) */
     
     //UITableViewCell内のオフセット値を再計算して視差効果をつける
