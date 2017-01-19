@@ -13,17 +13,41 @@ struct Settings {
     static let parallaxRatio: CGFloat = 0.24
 }
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate, UIViewControllerTransitioningDelegate {
 
     //グラデーションレイヤーを作成
     fileprivate let gradientLayer: CAGradientLayer = CAGradientLayer()
     
+    //ダミーヘッダービューの作成
+    fileprivate var headerBackgroundView: UIView = UIView(
+        frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 64)
+    )
+
     //UIパーツの配置
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var restaurantTableView: UITableView!
 
+    //タップ時に選択したimageViewを内包するUIViewを格納するための変数
+    var selectedWrapView: UIView?
+    
+    //カスタムトランジション用クラスのインスタンス
+    let transition = ImageHeaderTransition()
+    
+    //画面表示が開始された際のライフサイクル
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //NavigationControllerのカスタマイズを行う(ナビゲーションを透明にする)
+        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController!.navigationBar.shadowImage = UIImage()
+        self.navigationController!.navigationBar.tintColor = UIColor.white
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //ダミーヘッダービューのセットアップ
+        initializeDummyHeaderView()
         
         //グラデーションのセットアップ
         setupBackgroundGradation()
@@ -31,7 +55,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         //テーブルビューのセットアップ
         restaurantTableView.delegate = self
         restaurantTableView.dataSource = self
-        restaurantTableView.rowHeight = 278
+        restaurantTableView.rowHeight = 309.5
         
         //Xibのセットアップ
         let nibTableView: UINib = UINib(nibName: "RestaurantCell", bundle: nil)
@@ -101,6 +125,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         //cell?.restaurantLunchTime.text = "Lunch 11:30 ~ 14:00"
         //cell?.restaurantDetail.text = "このお店はタコスが絶品です。本場のタコスとテキーラで仕事帰りやランチタイムで最高の気分を味わって見ましょう！"
 
+        //セル内に配置したボタンを押下した際に発動されるアクションの内容を入れる
+        cell?.showRestaurantDetailClosure = {
+
+            //カスタムトランジションを適用した画面遷移を行う
+            self.selectedWrapView = cell?.imageWrapView
+
+            //遷移先のStoryboardの設定
+            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+
+            //遷移先のViewControllerの設定を行う
+            let restaurantDetail = storyboard.instantiateViewController(withIdentifier: "RestaurantDetailController") as! RestaurantDetailController
+
+            //遷移先のヘッダー画像に遷移元の画像を設定してカスタムトランジションを利用して遷移する
+            restaurantDetail.firstDisplayImage = cell?.imageImplView.image
+            restaurantDetail.transitioningDelegate = self
+            self.present(restaurantDetail, animated: true, completion: nil)
+        }
+
         cell?.accessoryType = UITableViewCellAccessoryType.none
         cell?.selectionStyle = UITableViewCellSelectionStyle.none
         return cell!
@@ -109,7 +151,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     /* (UIScrollViewDelegate) */
 
     //スクロールが検知された時に実行される処理
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    internal func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         //パララックスをするテーブルビューの場合
         if scrollView == restaurantTableView {
@@ -121,6 +163,23 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
     }
+    
+    //進む場合のアニメーションの設定を行う
+    internal func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        //選択したサムネイル画像の位置とサイズの情報を引き渡す
+        transition.originalFrame = selectedWrapView!.superview!.convert(selectedWrapView!.frame, to: nil)
+        transition.presenting = true
+        return transition
+    }
+    
+    //戻る場合のアニメーションの設定を行う
+    internal func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        transition.presenting = false
+        return transition
+    }
+    
     
     /* (Fileprivate Functions) */
     
@@ -140,7 +199,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     fileprivate func setupBackgroundGradation() {
 
         //上部分のグラデーションの開始色
-        let topColor = ColorConverter.colorWithHexString(hex: "999999", alpha: 0.55).cgColor
+        let topColor = ColorConverter.colorWithHexString(hex: "666666", alpha: 0.35).cgColor
         
         //下部分のグラデーションの開始色
         let bottomColor = ColorConverter.colorWithHexString(hex: "000000", alpha: 0.75).cgColor
@@ -156,6 +215,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         //グラデーションレイヤーをビューの一番下に配置
         backgroundImageView.layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
+    //ダミー用のヘッダービューの内容を設定する
+    fileprivate func initializeDummyHeaderView() {
+
+        //背景の配色や線に関する設定を行う
+        headerBackgroundView.backgroundColor = ColorConverter.colorWithHexString(hex: "333333", alpha: 0.85)
+        self.view.addSubview(headerBackgroundView)
     }
 
     override func didReceiveMemoryWarning() {

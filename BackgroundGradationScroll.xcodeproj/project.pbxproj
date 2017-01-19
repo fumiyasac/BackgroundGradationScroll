@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DE02985F1E308BBE00A0F875 /* ImageHeaderTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE02985E1E308BBE00A0F875 /* ImageHeaderTransition.swift */; };
 		DE2CD2F71E19380F0098B06C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2CD2F61E19380F0098B06C /* AppDelegate.swift */; };
 		DE2CD2F91E19380F0098B06C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2CD2F81E19380F0098B06C /* ViewController.swift */; };
 		DE2CD2FC1E19380F0098B06C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE2CD2FA1E19380F0098B06C /* Main.storyboard */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DE02985E1E308BBE00A0F875 /* ImageHeaderTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageHeaderTransition.swift; sourceTree = "<group>"; };
 		DE2CD2F31E19380F0098B06C /* BackgroundGradationScroll.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BackgroundGradationScroll.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE2CD2F61E19380F0098B06C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE2CD2F81E19380F0098B06C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 		DE6EA7211E295E0800AE5FE7 /* CustomTransition */ = {
 			isa = PBXGroup;
 			children = (
+				DE02985E1E308BBE00A0F875 /* ImageHeaderTransition.swift */,
 			);
 			name = CustomTransition;
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 				DE4E6EF01E2BE80200D18C1F /* ColumnViewController.swift in Sources */,
 				DE2CD3271E1943FD0098B06C /* RestaurantCell.swift in Sources */,
 				DE3414C71E2D19CF00A9D50C /* ColumnListController.swift in Sources */,
+				DE02985F1E308BBE00A0F875 /* ImageHeaderTransition.swift in Sources */,
 				DEC401B51E1E51CD00FFDE71 /* RestaurantDetailCell.swift in Sources */,
 				DEC401B31E1E2F6B00FFDE71 /* RestaurantDetailController.swift in Sources */,
 				DE2CD2F91E19380F0098B06C /* ViewController.swift in Sources */,

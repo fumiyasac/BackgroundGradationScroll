@@ -64,7 +64,7 @@ class ColumnViewController: UIViewController, UIScrollViewDelegate, UIPageViewCo
             vc.labelStr = index.description
             viewControllerLists.append(vc)
         }
-
+        
         //ContainerViewにEmbedしたUIPageViewControllerを取得する
         pageViewController = childViewControllers[0] as? UIPageViewController
         
@@ -109,7 +109,7 @@ class ColumnViewController: UIViewController, UIScrollViewDelegate, UIPageViewCo
                 //ボタンに関するセッティングを行う
                 buttonElement.backgroundColor = UIColor.clear
                 buttonElement.setTitle(categoryButtonList[i], for: UIControlState())
-                buttonElement.setTitleColor(UIColor.gray, for: UIControlState())
+                buttonElement.setTitleColor(UIColor.white, for: UIControlState())
                 buttonElement.titleLabel!.font = UIFont(name: "Georgia-Bold", size: 11)!
                 buttonElement.tag = i
                 buttonElement.addTarget(self, action: #selector(ColumnViewController.scrollButtonTapped(button:)), for: .touchUpInside)
@@ -135,7 +135,6 @@ class ColumnViewController: UIViewController, UIScrollViewDelegate, UIPageViewCo
             //一度だけ実行するフラグを有効化する
             layoutOnceFlag = true
         }
-        
     }
 
     /* (UIPageViewControllerDataSource) */
@@ -156,7 +155,6 @@ class ColumnViewController: UIViewController, UIScrollViewDelegate, UIPageViewCo
         } else {
             return viewControllerLists[index! - 1]
         }
-
     }
     
     //順方向にページ送りした時に呼ばれるメソッド
@@ -170,12 +168,11 @@ class ColumnViewController: UIViewController, UIScrollViewDelegate, UIPageViewCo
         moveButtonScrollContents(page: index!)
 
         //インデックスの値に応じてコンテンツを動かす
-        if index! >= CategoryBarMock.getCategoryBarMock().count - 1 {
+        if index! >= categoryButtonCount - 1 {
             return nil
         } else {
             return viewControllerLists[index! + 1]
         }
-
     }
 
     /* (ButtonTapped Functions) */
@@ -204,11 +201,10 @@ class ColumnViewController: UIViewController, UIScrollViewDelegate, UIPageViewCo
         pageViewController!.setViewControllers([viewControllerLists[page]], direction: targetDirection!, animated: true, completion: { finished in
             self.moveButtonScrollContents(page: page)
         })
-
     }
-    
+
     /* (Fileprivate Functions) */
-    
+
     //ボタンのスクロールビューをスライドさせる
     fileprivate func moveButtonScrollContents(page: Int) {
         
@@ -252,7 +248,7 @@ class ColumnViewController: UIViewController, UIScrollViewDelegate, UIPageViewCo
 
             //選択したカテゴリーの色設定を行う
             self.decideSelectedColor()
-            
+
         }, completion: nil)
     }
     
@@ -277,10 +273,9 @@ class ColumnViewController: UIViewController, UIScrollViewDelegate, UIPageViewCo
             if index == currentDisplay {
                 targetButton.setTitleColor(UIColor.orange, for: UIControlState())
             } else {
-                targetButton.setTitleColor(UIColor.gray, for: UIControlState())
+                targetButton.setTitleColor(UIColor.white, for: UIControlState())
             }
         }
-
     }
     
     override func didReceiveMemoryWarning() {

@@ -8,21 +8,21 @@
 
 import UIKit
 
-//ボタンに表示する文言のリスト(実際はデータからぶっこ抜く)
+//FIXME: カテゴリーバー実装用モック（後で消す）
 struct ScrollButtonList {
     static let buttonList: [String] = [
-        "taco",
-        "enchilada",
-        "quesadilla",
-        "pozole",
-        "ceviche"
+        "サムネイル画像1",
+        "サムネイル画像2",
+        "サムネイル画像3",
+        "サムネイル画像4",
+        "サムネイル画像5"
     ]
 }
 
 //スライドメニューの位置定義
 struct SlideMenuSetting {
-    static let movingLabelY = 40
-    static let movingLabelH = 2
+    static let movingLabelY = 34
+    static let movingLabelH = 1
 }
 
 /**
@@ -30,13 +30,14 @@ struct SlideMenuSetting {
  * http://blog.matthewcheok.com/design-teardown-stretchy-headers/
  */
 
-class RestaurantDetailController: UITableViewController {
+class RestaurantDetailController: UITableViewController, UIViewControllerTransitioningDelegate {
 
     //バウンドするヘッダーを作成するためのメンバ変数
     fileprivate var headerView: UIView!
     fileprivate let kTableHeaderHeight: CGFloat = 280.0
     
     //ヘッダー内に設定したイメージビュー
+    var firstDisplayImage: UIImage? = nil
     @IBOutlet weak var targetHeaderImageView: UIImageView!
 
     //ヘッダー下部分にあるスクロールビュー
@@ -53,7 +54,7 @@ class RestaurantDetailController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         //バウンドするヘッダー部分の定義をする
         headerView = tableView.tableHeaderView
         tableView.tableHeaderView = nil
@@ -63,6 +64,7 @@ class RestaurantDetailController: UITableViewController {
         updateTableViewHeader()
 
         //ヘッダー内に設定したイメージビューにGestureRecognizerをつける
+        targetHeaderImageView.image = firstDisplayImage
         targetHeaderImageView.isUserInteractionEnabled = true
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(RestaurantDetailController.changeTargetHeaderImageView(sender:)))
         targetHeaderImageView.addGestureRecognizer(tapGesture)
@@ -80,7 +82,7 @@ class RestaurantDetailController: UITableViewController {
             initScrollViewDefinition()
             
             //フォントの定義
-            let fontSetting = UIFont(name: "Georgia-Bold", size: 12)!
+            let fontSetting = UIFont(name: "Georgia-Bold", size: 11)!
             
             //スクロールビュー内のサイズを決定する（AutoLayoutで配置を行った場合でもこの部分はコードで設定しないといけない）
             targetHeaderScrollView.contentSize = CGSize(
@@ -184,6 +186,7 @@ class RestaurantDetailController: UITableViewController {
     //ヘッダーのイメージビューのGestureRecognizer発動時に呼ばれる
     func changeTargetHeaderImageView(sender: UITapGestureRecognizer) {
         print("Target Header ImageTapped.")
+        presentingViewController?.dismiss(animated: true, completion: nil)
     }
 
     //ボタンをタップした際に行われる処理

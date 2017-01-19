@@ -10,15 +10,19 @@ import UIKit
 
 class RestaurantCell: UITableViewCell {
 
+    //ViewController.swiftへ処理内容を引き渡すためのクロージャーを設定
+    var showRestaurantDetailClosure: (() -> ())?
+    
     //UIパーツの配置
     @IBOutlet weak var imageWrapView: UIView!
-
+    @IBOutlet weak var imageImplView: UIImageView!
+    
     //UIViewに内包したUIImageViewの上下の制約
     @IBOutlet weak var topImageViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var bottomImageViewConstraint: NSLayoutConstraint!
 
     //視差効果のズレを生むための定数（大きいほど視差効果が大きい）
-    let imageParallaxFactor: CGFloat = 50
+    let imageParallaxFactor: CGFloat = 75
     
     //視差効果の計算用の変数
     var imgBackTopInitial: CGFloat!
@@ -44,6 +48,13 @@ class RestaurantCell: UITableViewCell {
         let pixelOffset = (1 - boundOffset) * 2 * imageParallaxFactor
         topImageViewConstraint.constant = imgBackTopInitial - pixelOffset
         bottomImageViewConstraint.constant = imgBackBottomInitial + pixelOffset
+    }
+    
+    //
+    @IBAction func showDetailAction(_ sender: UIButton) {
+
+        //
+        showRestaurantDetailClosure!()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
