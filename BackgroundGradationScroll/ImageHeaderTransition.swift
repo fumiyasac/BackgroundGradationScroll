@@ -13,7 +13,7 @@ import UIKit
 class ImageHeaderTransition: NSObject, UIViewControllerAnimatedTransitioning {
     
     //トランジションの秒数
-    let duration      = 0.48
+    let duration      = 0.36
     
     //トランジションの方向(present: true, dismiss: false)
     var presenting    = true

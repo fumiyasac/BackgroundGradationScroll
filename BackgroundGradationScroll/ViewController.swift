@@ -32,7 +32,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     //カスタムトランジション用クラスのインスタンス
     let transition = ImageHeaderTransition()
-    
+
     //画面表示が開始された際のライフサイクル
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -131,11 +131,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             //カスタムトランジションを適用した画面遷移を行う
             self.selectedWrapView = cell?.imageWrapView
 
-            //遷移先のStoryboardの設定
-            let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-
             //遷移先のViewControllerの設定を行う
-            let restaurantDetail = storyboard.instantiateViewController(withIdentifier: "RestaurantDetailController") as! RestaurantDetailController
+            let restaurantDetail = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "RestaurantDetailController") as! RestaurantDetailController
 
             //遷移先のヘッダー画像に遷移元の画像を設定してカスタムトランジションを利用して遷移する
             restaurantDetail.firstDisplayImage = cell?.imageImplView.image
@@ -179,6 +176,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         transition.presenting = false
         return transition
+    }
+
+    /* (ButtonActions) */
+
+    //サイドメニューを開くアクション
+    @IBAction func openSideMenuAction(_ sender: UIButton) {
+    }
+
+    //コラム用コンテンツを開くアクション
+    @IBAction func openColumnContentsAction(_ sender: UIButton) {
+        
+        //Column.storyboard側のコンテンツを表示する
+        let columnView = UIStoryboard(name: "Column", bundle: nil).instantiateViewController(withIdentifier: "ColumnViewController") as! ColumnViewController
+        self.navigationController?.pushViewController(columnView, animated: true)
     }
 
     /* (Fileprivate Functions) */

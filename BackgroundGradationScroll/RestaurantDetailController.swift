@@ -68,6 +68,7 @@ class RestaurantDetailController: UITableViewController, UIViewControllerTransit
         targetHeaderImageView.isUserInteractionEnabled = true
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(RestaurantDetailController.changeTargetHeaderImageView(sender:)))
         targetHeaderImageView.addGestureRecognizer(tapGesture)
+
     }
 
     //レイアウト処理が完了した際のライフサイクル
@@ -154,7 +155,7 @@ class RestaurantDetailController: UITableViewController, UIViewControllerTransit
 
     //セクション内のセル数
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -184,12 +185,18 @@ class RestaurantDetailController: UITableViewController, UIViewControllerTransit
         }
     }
 
+    /* (Button Actions) */
+
+    //閉じるボタン「×」をタップした際に行われる処理
+    @IBAction func closeButtonAction(_ sender: UIButton) {
+        presentingViewController?.dismiss(animated: true, completion: nil)
+    }
+    
     /* (Functions) */
     
     //ヘッダーのイメージビューのGestureRecognizer発動時に呼ばれる
     func changeTargetHeaderImageView(sender: UITapGestureRecognizer) {
         print("Target Header ImageTapped.")
-        presentingViewController?.dismiss(animated: true, completion: nil)
     }
 
     //ボタンをタップした際に行われる処理

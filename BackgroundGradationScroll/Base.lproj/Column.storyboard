@@ -28,7 +28,7 @@
         <!--Column View Controller-->
         <scene sceneID="Ue3-Gw-gwK">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="fTR-OA-P0b" customClass="ColumnViewController" customModule="BackgroundGradationScroll" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ColumnViewController" automaticallyAdjustsScrollViewInsets="NO" id="fTR-OA-P0b" customClass="ColumnViewController" customModule="BackgroundGradationScroll" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LM0-gA-rKF"/>
                         <viewControllerLayoutGuide type="bottom" id="F1D-bj-Ggb"/>
@@ -69,7 +69,18 @@
                             <constraint firstItem="UyI-IP-me4" firstAttribute="top" secondItem="LM0-gA-rKF" secondAttribute="bottom" id="zTX-6w-w55"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Yqp-aL-Rsr"/>
+                    <navigationItem key="navigationItem" id="Yqp-aL-Rsr">
+                        <barButtonItem key="leftBarButtonItem" title="Item" style="plain" id="nZX-8x-H9j">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="pjw-kJ-QN8">
+                                <rect key="frame" x="16" y="11" width="13" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="arrow-icon"/>
+                                <connections>
+                                    <action selector="backViewControllerAction:" destination="fTR-OA-P0b" eventType="touchUpInside" id="lNt-OC-m5v"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="backgroundCategoryImage" destination="ioE-ls-ZZb" id="ByD-eN-GN9"/>
                         <outlet property="categoryBarScrollView" destination="UyI-IP-me4" id="v5G-ma-xEF"/>
@@ -163,4 +174,7 @@
             <point key="canvasLocation" x="653.60000000000002" y="879.31034482758628"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="arrow-icon" width="13" height="21"/>
+    </resources>
 </document>

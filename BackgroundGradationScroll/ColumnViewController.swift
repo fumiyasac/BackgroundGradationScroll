@@ -21,7 +21,7 @@ struct CategoryMenuSetting {
     static let movingLabelH = 2
 }
 
-class ColumnViewController: UIViewController, UIScrollViewDelegate, UIPageViewControllerDataSource {
+class ColumnViewController: UIViewController, UIScrollViewDelegate, UIPageViewControllerDataSource, UINavigationControllerDelegate {
 
     //現在位置を保持するメンバ変数
     fileprivate var currentDisplay: Int = 0
@@ -50,7 +50,17 @@ class ColumnViewController: UIViewController, UIScrollViewDelegate, UIPageViewCo
     
     //ページングして表示させるViewControllerを保持する
     var viewControllerLists = [ColumnListController]()
-    
+
+    //画面表示が開始された際のライフサイクル
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //NavigationControllerのカスタマイズを行う(ナビゲーションを透明にする)
+        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController!.navigationBar.shadowImage = UIImage()
+        self.navigationController!.navigationBar.tintColor = UIColor.white
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -173,6 +183,16 @@ class ColumnViewController: UIViewController, UIScrollViewDelegate, UIPageViewCo
         } else {
             return viewControllerLists[index! + 1]
         }
+    }
+
+    /* (Button Actions) */
+
+    //遷移元のViewControllerへ戻すアクション
+    @IBAction func backViewControllerAction(_ sender: UIButton) {
+        
+        //【Swift3】navigationControllerのpopViewControllerで警告がでる
+        //参考：http://blog.sgr-ksmt.org/2016/10/06/pop_view_controller_swift3/
+        let _ = navigationController?.popViewController(animated: true)
     }
 
     /* (ButtonTapped Functions) */

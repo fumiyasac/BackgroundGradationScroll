@@ -13,7 +13,7 @@
         <scene sceneID="sYA-Ga-i0g">
             <objects>
                 <navigationController id="jQh-jE-jiv" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="rw2-YT-cNf">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rw2-YT-cNf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
@@ -28,7 +28,7 @@
             </objects>
             <point key="canvasLocation" x="-574" y="124"/>
         </scene>
-        <!--Secret Restaurant-->
+        <!--勝負レストラン-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="BackgroundGradationScroll" customModuleProvider="target" sceneMemberID="viewController">
@@ -61,7 +61,7 @@
                             <constraint firstItem="BJn-jR-6qe" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="r4d-Eo-sLl"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Secret Restaurant" id="hyS-JD-1mh">
+                    <navigationItem key="navigationItem" title="勝負レストラン" id="hyS-JD-1mh">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="KLr-d3-F8i">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JOW-gm-H2F">
                                 <rect key="frame" x="16" y="7" width="50" height="30"/>
@@ -70,6 +70,9 @@
                                 <state key="normal" title="≡ MENU">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="openSideMenuAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mac-4F-WAf"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="Y7A-xM-LHR">
@@ -80,13 +83,15 @@
                                 <state key="normal" title="▶︎ COLUMN">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="openColumnContentsAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ztB-s7-swW"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="backgroundImageView" destination="BJn-jR-6qe" id="6hJ-5K-f5g"/>
                         <outlet property="restaurantTableView" destination="gz4-Aa-lnb" id="ozy-Ev-hxa"/>
-                        <segue destination="xoc-Wx-C0X" kind="show" identifier="showRestaurantDetailAction" id="7aI-Vc-QgL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -115,11 +120,27 @@
                                         <constraint firstAttribute="height" constant="46" id="IG0-f5-GS4"/>
                                     </constraints>
                                 </scrollView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oek-xe-L2V">
+                                    <rect key="frame" x="10" y="20" width="30" height="30"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="30" id="bo1-Aq-omr"/>
+                                        <constraint firstAttribute="height" constant="30" id="iDY-Xv-RYZ"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="55"/>
+                                    <state key="normal" title="×">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="closeButtonAction:" destination="xoc-Wx-C0X" eventType="touchUpInside" id="PpO-Sg-VRe"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="qiX-C9-m2I" secondAttribute="bottom" id="6xi-08-M8f"/>
+                                <constraint firstItem="Oek-xe-L2V" firstAttribute="top" secondItem="gc3-rm-Prf" secondAttribute="top" constant="20" id="B7V-GB-1dJ"/>
                                 <constraint firstItem="qiX-C9-m2I" firstAttribute="leading" secondItem="gc3-rm-Prf" secondAttribute="leading" id="FUE-6m-4Mq"/>
+                                <constraint firstItem="Oek-xe-L2V" firstAttribute="leading" secondItem="gc3-rm-Prf" secondAttribute="leading" constant="10" id="pwO-T7-FXD"/>
                                 <constraint firstItem="qiX-C9-m2I" firstAttribute="top" secondItem="gc3-rm-Prf" secondAttribute="top" id="rPk-s3-Bwa"/>
                                 <constraint firstItem="lNX-rC-Ozw" firstAttribute="leading" secondItem="gc3-rm-Prf" secondAttribute="leading" id="uAn-cA-zHJ"/>
                                 <constraint firstAttribute="bottom" secondItem="lNX-rC-Ozw" secondAttribute="bottom" id="uVP-Ec-LpZ"/>
@@ -170,7 +191,6 @@
                             <outlet property="delegate" destination="xoc-Wx-C0X" id="LO1-Xx-hU9"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="J3g-xf-GPa"/>
                     <connections>
                         <outlet property="targetHeaderImageView" destination="qiX-C9-m2I" id="2gZ-Fe-EhM"/>
                         <outlet property="targetHeaderScrollView" destination="lNX-rC-Ozw" id="D5K-jY-QCF"/>
@@ -178,7 +198,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YjW-s6-OjH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="929" y="124"/>
+            <point key="canvasLocation" x="966" y="124"/>
         </scene>
     </scenes>
     <resources>
