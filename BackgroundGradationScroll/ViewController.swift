@@ -8,12 +8,26 @@
 
 import UIKit
 
+//サイドバーのステータス
+enum SidebarStatus {
+    case opened
+    case closed
+}
+
+//サイドバーに関するセッティング
+struct SidebarSettings {
+    static let sidebarWidth: CGFloat = 260.0
+}
+
 //パララックスに関するセッティング
-struct Settings {
+struct ParallaxSettings {
     static let parallaxRatio: CGFloat = 0.24
 }
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate, UIViewControllerTransitioningDelegate {
+
+    //サイドバーのステータス値
+    fileprivate var sidebarStatus: SidebarStatus = .closed
 
     //グラデーションレイヤーを作成
     fileprivate let gradientLayer: CAGradientLayer = CAGradientLayer()
@@ -26,6 +40,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //UIパーツの配置
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var restaurantTableView: UITableView!
+    @IBOutlet weak var sideMenuHandleButton: UIButton!
+    @IBOutlet weak var sideMenuContainerView: UIView!
 
     //タップ時に選択したimageViewを内包するUIViewを格納するための変数
     var selectedWrapView: UIView?
@@ -62,6 +78,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         restaurantTableView.register(nibTableView, forCellReuseIdentifier: "RestaurantCell")
     }
 
+    /* (viewDidLayoutSubviews) */
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        //サイドメニューの初期位置設定と配置を行う
+        sideMenuHandleButton.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+        sideMenuHandleButton.isEnabled = false
+        sideMenuHandleButton.alpha = 0
+        sideMenuContainerView.frame = CGRect(x: -SidebarSettings.sidebarWidth, y: 0, width: SidebarSettings.sidebarWidth, height: self.view.frame.height)
+        
+        navigationController?.view.addSubview(sideMenuHandleButton)
+        navigationController?.view.addSubview(sideMenuContainerView)
+    }
+    
     /* (UITableViewDelegate) */
     
     //テーブルのセクションのセル数を設定する
@@ -180,8 +211,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     /* (ButtonActions) */
 
-    //サイドメニューを開くアクション
+    //サイドメニューを開くためのアクション
     @IBAction func openSideMenuAction(_ sender: UIButton) {
+        sidebarStatus = .opened
+        changeSideMenuStatus(sidebarStatus)
+    }
+
+    //サイドメニューを閉じるためのアクション
+    @IBAction func closeSideMenuAction(_ sender: UIButton) {
+        sidebarStatus = .closed
+        changeSideMenuStatus(sidebarStatus)
     }
 
     //コラム用コンテンツを開くアクション
@@ -193,6 +232,33 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
 
     /* (Fileprivate Functions) */
+
+    //サイドメニューの開閉ハンドリング機能を実装する
+    fileprivate func changeSideMenuStatus(_ targetStatus: SidebarStatus) {
+        
+        if targetStatus == SidebarStatus.opened {
+            
+            //サイドメニューを表示状態にする
+            UIView.animate(withDuration: 0.24, delay: 0, options: .curveEaseOut, animations: {
+                
+                self.sideMenuHandleButton.isEnabled = true
+                self.sideMenuHandleButton.alpha = 0.6
+                self.sideMenuContainerView.frame = CGRect(x: 0, y: 0, width: SidebarSettings.sidebarWidth, height: self.view.frame.height)
+                
+            }, completion: nil)
+            
+        } else {
+            
+            //サイドメニューを非表示状態にする
+            UIView.animate(withDuration: 0.24, delay: 0, options: .curveEaseOut, animations: {
+                
+                self.sideMenuHandleButton.isEnabled = false
+                self.sideMenuHandleButton.alpha = 0
+                self.sideMenuContainerView.frame = CGRect(x: -SidebarSettings.sidebarWidth, y: 0, width: SidebarSettings.sidebarWidth, height: self.view.frame.height)
+                
+            }, completion: nil)
+        }
+    }
     
     //UITableViewCell内のオフセット値を再計算して視差効果をつける
     fileprivate func setCellImageOffset(_ cell: RestaurantCell, indexPath: IndexPath) {

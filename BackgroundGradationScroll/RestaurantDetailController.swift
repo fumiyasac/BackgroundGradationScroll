@@ -179,9 +179,6 @@ class RestaurantDetailController: UITableViewController, UIViewControllerTransit
 
             //ヘッダーをスクロールに応じて動かす
             updateTableViewHeader()
-            
-        } else {
-            
         }
     }
 
