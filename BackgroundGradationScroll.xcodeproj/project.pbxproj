@@ -18,11 +18,13 @@
 		DE2CD3281E1943FD0098B06C /* RestaurantCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE2CD3261E1943FD0098B06C /* RestaurantCell.xib */; };
 		DE2CD32A1E195C900098B06C /* ColorConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2CD3291E195C900098B06C /* ColorConverter.swift */; };
 		DE3414C71E2D19CF00A9D50C /* ColumnListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3414C61E2D19CF00A9D50C /* ColumnListController.swift */; };
+		DE449FC21E364C3B00BEBE88 /* APIClientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE449FC11E364C3B00BEBE88 /* APIClientManager.swift */; };
 		DE4E6EF01E2BE80200D18C1F /* ColumnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4E6EEF1E2BE80200D18C1F /* ColumnViewController.swift */; };
 		DE51288C1E3214950012FC73 /* Column.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE51288A1E3214950012FC73 /* Column.storyboard */; };
 		DE51288F1E3214A60012FC73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE51288D1E3214A60012FC73 /* Main.storyboard */; };
 		DEC401B31E1E2F6B00FFDE71 /* RestaurantDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC401B21E1E2F6B00FFDE71 /* RestaurantDetailController.swift */; };
 		DEC401B51E1E51CD00FFDE71 /* RestaurantDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC401B41E1E51CD00FFDE71 /* RestaurantDetailCell.swift */; };
+		E682619A8B3BFB6ED27C1AB5 /* Pods_BackgroundGradationScroll.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0A56F27604CAC4EF6ED4A73 /* Pods_BackgroundGradationScroll.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +45,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2FFBF185EE6D41A7102DD6ED /* Pods-BackgroundGradationScroll.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BackgroundGradationScroll.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BackgroundGradationScroll/Pods-BackgroundGradationScroll.debug.xcconfig"; sourceTree = "<group>"; };
+		33B796F7118EA93204DA7418 /* Pods-BackgroundGradationScroll.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BackgroundGradationScroll.release.xcconfig"; path = "Pods/Target Support Files/Pods-BackgroundGradationScroll/Pods-BackgroundGradationScroll.release.xcconfig"; sourceTree = "<group>"; };
+		B0A56F27604CAC4EF6ED4A73 /* Pods_BackgroundGradationScroll.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BackgroundGradationScroll.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE02985E1E308BBE00A0F875 /* ImageHeaderTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageHeaderTransition.swift; sourceTree = "<group>"; };
 		DE2CD2F31E19380F0098B06C /* BackgroundGradationScroll.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BackgroundGradationScroll.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE2CD2F61E19380F0098B06C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +65,8 @@
 		DE2CD3261E1943FD0098B06C /* RestaurantCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RestaurantCell.xib; sourceTree = "<group>"; };
 		DE2CD3291E195C900098B06C /* ColorConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorConverter.swift; sourceTree = "<group>"; };
 		DE3414C61E2D19CF00A9D50C /* ColumnListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColumnListController.swift; sourceTree = "<group>"; };
+		DE449FC11E364C3B00BEBE88 /* APIClientManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClientManager.swift; sourceTree = "<group>"; };
+		DE449FC41E364DBE00BEBE88 /* BackgroundGradationScroll-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BackgroundGradationScroll-Bridging-Header.h"; sourceTree = "<group>"; };
 		DE4E6EEF1E2BE80200D18C1F /* ColumnViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColumnViewController.swift; sourceTree = "<group>"; };
 		DE51288B1E3214950012FC73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Column.storyboard; sourceTree = "<group>"; };
 		DE51288E1E3214A60012FC73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -72,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E682619A8B3BFB6ED27C1AB5 /* Pods_BackgroundGradationScroll.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +100,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6BC46F74AAD477E8E91AE897 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2FFBF185EE6D41A7102DD6ED /* Pods-BackgroundGradationScroll.debug.xcconfig */,
+				33B796F7118EA93204DA7418 /* Pods-BackgroundGradationScroll.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D54A37D6B0EED52C6F186497 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B0A56F27604CAC4EF6ED4A73 /* Pods_BackgroundGradationScroll.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		DE2B22761E1EAA810034C106 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +132,8 @@
 				DE2CD30A1E1938100098B06C /* BackgroundGradationScrollTests */,
 				DE2CD3151E1938100098B06C /* BackgroundGradationScrollUITests */,
 				DE2CD2F41E19380F0098B06C /* Products */,
+				6BC46F74AAD477E8E91AE897 /* Pods */,
+				D54A37D6B0EED52C6F186497 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -168,8 +195,17 @@
 			isa = PBXGroup;
 			children = (
 				DE2CD3291E195C900098B06C /* ColorConverter.swift */,
+				DE449FC11E364C3B00BEBE88 /* APIClientManager.swift */,
 			);
 			name = Structs;
+			sourceTree = "<group>";
+		};
+		DE449FC31E364C4400BEBE88 /* BridgingHeader */ = {
+			isa = PBXGroup;
+			children = (
+				DE449FC41E364DBE00BEBE88 /* BackgroundGradationScroll-Bridging-Header.h */,
+			);
+			name = BridgingHeader;
 			sourceTree = "<group>";
 		};
 		DE4E6EED1E2BE7D900D18C1F /* Main */ = {
@@ -218,6 +254,7 @@
 		DE6EA7201E295DFD00AE5FE7 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				DE449FC31E364C4400BEBE88 /* BridgingHeader */,
 				DE6EA7211E295E0800AE5FE7 /* CustomTransition */,
 			);
 			name = Classes;
@@ -247,9 +284,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DE2CD31B1E1938100098B06C /* Build configuration list for PBXNativeTarget "BackgroundGradationScroll" */;
 			buildPhases = (
+				89AEAEDBE65027F5FEB80BAD /* [CP] Check Pods Manifest.lock */,
 				DE2CD2EF1E19380F0098B06C /* Sources */,
 				DE2CD2F01E19380F0098B06C /* Frameworks */,
 				DE2CD2F11E19380F0098B06C /* Resources */,
+				4887D8C18BECB1CEED163D75 /* [CP] Embed Pods Frameworks */,
+				6F47C45599A147990C7FE716 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -372,6 +412,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4887D8C18BECB1CEED163D75 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BackgroundGradationScroll/Pods-BackgroundGradationScroll-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6F47C45599A147990C7FE716 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BackgroundGradationScroll/Pods-BackgroundGradationScroll-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		89AEAEDBE65027F5FEB80BAD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DE2CD2EF1E19380F0098B06C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -382,6 +470,7 @@
 				DE3414C71E2D19CF00A9D50C /* ColumnListController.swift in Sources */,
 				DE02985F1E308BBE00A0F875 /* ImageHeaderTransition.swift in Sources */,
 				DEC401B51E1E51CD00FFDE71 /* RestaurantDetailCell.swift in Sources */,
+				DE449FC21E364C3B00BEBE88 /* APIClientManager.swift in Sources */,
 				DEC401B31E1E2F6B00FFDE71 /* RestaurantDetailController.swift in Sources */,
 				DE2CD2F91E19380F0098B06C /* ViewController.swift in Sources */,
 				DE2CD32A1E195C900098B06C /* ColorConverter.swift in Sources */,
@@ -541,6 +630,7 @@
 		};
 		DE2CD31C1E1938100098B06C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2FFBF185EE6D41A7102DD6ED /* Pods-BackgroundGradationScroll.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = S5BF5553KY;
@@ -548,12 +638,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.just1factory.BackgroundGradationScroll;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/sakaifumiya/Desktop/iOSApp/BackgroundGradationScroll/BackgroundGradationScroll/BackgroundGradationScroll-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		DE2CD31D1E1938100098B06C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 33B796F7118EA93204DA7418 /* Pods-BackgroundGradationScroll.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = S5BF5553KY;
@@ -561,6 +653,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.just1factory.BackgroundGradationScroll;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/sakaifumiya/Desktop/iOSApp/BackgroundGradationScroll/BackgroundGradationScroll/BackgroundGradationScroll-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
