@@ -217,19 +217,51 @@
             </objects>
             <point key="canvasLocation" x="966" y="124"/>
         </scene>
-        <!--View Controller-->
+        <!--Sidemenu Controller-->
         <scene sceneID="oDV-de-uCY">
             <objects>
-                <viewController id="3OR-Xa-wxL" sceneMemberID="viewController">
+                <viewController id="3OR-Xa-wxL" customClass="SidemenuController" customModule="BackgroundGradationScroll" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZvY-Bj-SMa"/>
+                        <viewControllerLayoutGuide type="bottom" id="aOs-sj-tYg"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="hkC-QD-VFe">
                         <rect key="frame" x="0.0" y="0.0" width="280" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Sf5-DX-qPt">
+                                <rect key="frame" x="0.0" y="20" width="280" height="517"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hdf-ev-jEw">
+                                <rect key="frame" x="0.0" y="537" width="280" height="130"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="130" id="EUs-n5-JXC"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="bannerButtonAction:" destination="3OR-Xa-wxL" eventType="touchUpInside" id="5YI-aP-tQL"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Hdf-ev-jEw" firstAttribute="leading" secondItem="hkC-QD-VFe" secondAttribute="leading" id="8v9-Fw-h6e"/>
+                            <constraint firstItem="Sf5-DX-qPt" firstAttribute="top" secondItem="ZvY-Bj-SMa" secondAttribute="bottom" constant="20" id="9IC-Jm-P9E"/>
+                            <constraint firstAttribute="trailing" secondItem="Hdf-ev-jEw" secondAttribute="trailing" id="Ewy-Mg-mJ7"/>
+                            <constraint firstItem="aOs-sj-tYg" firstAttribute="top" secondItem="Hdf-ev-jEw" secondAttribute="bottom" id="WaF-Ua-BR8"/>
+                            <constraint firstItem="Sf5-DX-qPt" firstAttribute="leading" secondItem="hkC-QD-VFe" secondAttribute="leading" id="ZaB-or-NRl"/>
+                            <constraint firstItem="Hdf-ev-jEw" firstAttribute="top" secondItem="Sf5-DX-qPt" secondAttribute="bottom" id="i6T-6m-VdQ"/>
+                            <constraint firstAttribute="trailing" secondItem="Sf5-DX-qPt" secondAttribute="trailing" id="vk1-Y2-8q4"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="bannerButton" destination="Hdf-ev-jEw" id="dpk-aA-42o"/>
+                        <outlet property="sideMenuTableView" destination="Sf5-DX-qPt" id="oqy-74-Ft6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T93-fi-8xY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="101" y="893"/>
+            <point key="canvasLocation" x="100.8" y="892.80359820089961"/>
         </scene>
     </scenes>
     <resources>
