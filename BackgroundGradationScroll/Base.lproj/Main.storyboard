@@ -48,10 +48,10 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                             </tableView>
-                            <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nk5-VK-ZI4">
+                            <button opaque="NO" alpha="0.75" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nk5-VK-ZI4">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <action selector="closeSideMenuAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="flF-A0-ddl"/>
                                 </connections>
@@ -138,12 +138,12 @@
                                     </constraints>
                                 </scrollView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oek-xe-L2V">
-                                    <rect key="frame" x="10" y="20" width="30" height="30"/>
+                                    <rect key="frame" x="5" y="15" width="50" height="50"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="30" id="bo1-Aq-omr"/>
-                                        <constraint firstAttribute="height" constant="30" id="iDY-Xv-RYZ"/>
+                                        <constraint firstAttribute="width" constant="50" id="bo1-Aq-omr"/>
+                                        <constraint firstAttribute="height" constant="50" id="iDY-Xv-RYZ"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="55"/>
+                                    <fontDescription key="fontDescription" type="system" weight="thin" pointSize="60"/>
                                     <state key="normal" title="×">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -155,9 +155,9 @@
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="qiX-C9-m2I" secondAttribute="bottom" id="6xi-08-M8f"/>
-                                <constraint firstItem="Oek-xe-L2V" firstAttribute="top" secondItem="gc3-rm-Prf" secondAttribute="top" constant="20" id="B7V-GB-1dJ"/>
+                                <constraint firstItem="Oek-xe-L2V" firstAttribute="top" secondItem="gc3-rm-Prf" secondAttribute="top" constant="15" id="B7V-GB-1dJ"/>
                                 <constraint firstItem="qiX-C9-m2I" firstAttribute="leading" secondItem="gc3-rm-Prf" secondAttribute="leading" id="FUE-6m-4Mq"/>
-                                <constraint firstItem="Oek-xe-L2V" firstAttribute="leading" secondItem="gc3-rm-Prf" secondAttribute="leading" constant="10" id="pwO-T7-FXD"/>
+                                <constraint firstItem="Oek-xe-L2V" firstAttribute="leading" secondItem="gc3-rm-Prf" secondAttribute="leading" constant="5" id="pwO-T7-FXD"/>
                                 <constraint firstItem="qiX-C9-m2I" firstAttribute="top" secondItem="gc3-rm-Prf" secondAttribute="top" id="rPk-s3-Bwa"/>
                                 <constraint firstItem="lNX-rC-Ozw" firstAttribute="leading" secondItem="gc3-rm-Prf" secondAttribute="leading" id="uAn-cA-zHJ"/>
                                 <constraint firstAttribute="bottom" secondItem="lNX-rC-Ozw" secondAttribute="bottom" id="uVP-Ec-LpZ"/>
@@ -215,12 +215,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YjW-s6-OjH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="966" y="124"/>
+            <point key="canvasLocation" x="965.60000000000002" y="123.68815592203899"/>
         </scene>
         <!--Sidemenu Controller-->
         <scene sceneID="oDV-de-uCY">
             <objects>
-                <viewController id="3OR-Xa-wxL" customClass="SidemenuController" customModule="BackgroundGradationScroll" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="3OR-Xa-wxL" customClass="SidemenuController" customModule="BackgroundGradationScroll" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZvY-Bj-SMa"/>
                         <viewControllerLayoutGuide type="bottom" id="aOs-sj-tYg"/>
@@ -230,7 +230,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Sf5-DX-qPt">
-                                <rect key="frame" x="0.0" y="20" width="280" height="517"/>
+                                <rect key="frame" x="0.0" y="0.0" width="280" height="537"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hdf-ev-jEw">
@@ -246,7 +246,7 @@
                         <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Hdf-ev-jEw" firstAttribute="leading" secondItem="hkC-QD-VFe" secondAttribute="leading" id="8v9-Fw-h6e"/>
-                            <constraint firstItem="Sf5-DX-qPt" firstAttribute="top" secondItem="ZvY-Bj-SMa" secondAttribute="bottom" constant="20" id="9IC-Jm-P9E"/>
+                            <constraint firstItem="Sf5-DX-qPt" firstAttribute="top" secondItem="ZvY-Bj-SMa" secondAttribute="bottom" id="9IC-Jm-P9E"/>
                             <constraint firstAttribute="trailing" secondItem="Hdf-ev-jEw" secondAttribute="trailing" id="Ewy-Mg-mJ7"/>
                             <constraint firstItem="aOs-sj-tYg" firstAttribute="top" secondItem="Hdf-ev-jEw" secondAttribute="bottom" id="WaF-Ua-BR8"/>
                             <constraint firstItem="Sf5-DX-qPt" firstAttribute="leading" secondItem="hkC-QD-VFe" secondAttribute="leading" id="ZaB-or-NRl"/>

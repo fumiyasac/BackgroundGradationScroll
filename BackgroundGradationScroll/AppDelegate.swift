@@ -15,6 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+
+        //(参考)ステータスバーのスタイル(色)変更方法優先度 まとめ
+        //http://qiita.com/ux_design_tokyo/items/8e62977b7609e68755c7
+
         return true
     }
 

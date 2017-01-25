@@ -154,7 +154,7 @@ class ColumnViewController: UIViewController, UIScrollViewDelegate, UIPageViewCo
         
         //インデックスを取得する
         let index = viewControllerLists.index(of: viewController as! ColumnListController)
-        
+
         //現在位置のインデックスを変数:currentDisplayに保持してタブを移動させる
         currentDisplay = index!
         moveButtonScrollContents(page: currentDisplay)
@@ -228,6 +228,10 @@ class ColumnViewController: UIViewController, UIScrollViewDelegate, UIPageViewCo
     //ボタンのスクロールビューをスライドさせる
     fileprivate func moveButtonScrollContents(page: Int) {
         
+        //メソッドが実行された時はユーザーの操作をできないようにする
+        categoryBarScrollView.isUserInteractionEnabled = false
+        pageViewController?.view.isUserInteractionEnabled = false
+
         //Case1: ボタンを内包しているスクロールビューの位置変更をする
         if page > 0 && page < (categoryButtonCount - 1) {
             
@@ -269,7 +273,12 @@ class ColumnViewController: UIViewController, UIScrollViewDelegate, UIPageViewCo
             //選択したカテゴリーの色設定を行う
             self.decideSelectedColor()
 
-        }, completion: nil)
+        }, completion: { finished in
+
+            //アニメーションが完了した時はユーザーの操作ができるようにする
+            self.categoryBarScrollView.isUserInteractionEnabled = true
+            self.pageViewController?.view.isUserInteractionEnabled = true
+        })
     }
     
     //サイドバー用のUIScrollViewの初期化を行う

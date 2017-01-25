@@ -149,12 +149,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         //Xibファイルを元にデータを作成する
         let cell = tableView.dequeueReusableCell(withIdentifier: "RestaurantCell") as? RestaurantCell
         
-        //仮のデータを設計してセルに表示させる
-        //cell?.restaurantName.text = "Mexican Dinning"
-        //cell?.restaurantThumbnail.image = UIImage(named: "sample")
-        //cell?.restaurantOpen.text = "11:30 ~ 23:00"
-        //cell?.restaurantLunchTime.text = "Lunch 11:30 ~ 14:00"
-        //cell?.restaurantDetail.text = "このお店はタコスが絶品です。本場のタコスとテキーラで仕事帰りやランチタイムで最高の気分を味わって見ましょう！"
+        //TODO: 取得データをセルに表示させる
 
         //セル内に配置したボタンを押下した際に発動されるアクションの内容を入れる
         cell?.showRestaurantDetailClosure = {
@@ -239,10 +234,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if targetStatus == SidebarStatus.opened {
             
             //サイドメニューを表示状態にする
-            UIView.animate(withDuration: 0.24, delay: 0, options: .curveEaseOut, animations: {
+            UIView.animate(withDuration: 0.16, delay: 0, options: .curveEaseOut, animations: {
                 
                 self.sideMenuHandleButton.isEnabled = true
-                self.sideMenuHandleButton.alpha = 0.6
+                self.sideMenuHandleButton.alpha = 0.75
                 self.sideMenuContainerView.frame = CGRect(x: 0, y: 0, width: SidebarSettings.sidebarWidth, height: self.view.frame.height)
                 
             }, completion: nil)
@@ -250,12 +245,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         } else {
             
             //サイドメニューを非表示状態にする
-            UIView.animate(withDuration: 0.24, delay: 0, options: .curveEaseOut, animations: {
+            UIView.animate(withDuration: 0.16, delay: 0, options: .curveEaseOut, animations: {
                 
                 self.sideMenuHandleButton.isEnabled = false
                 self.sideMenuHandleButton.alpha = 0
                 self.sideMenuContainerView.frame = CGRect(x: -SidebarSettings.sidebarWidth, y: 0, width: SidebarSettings.sidebarWidth, height: self.view.frame.height)
-                
+
             }, completion: nil)
         }
     }
