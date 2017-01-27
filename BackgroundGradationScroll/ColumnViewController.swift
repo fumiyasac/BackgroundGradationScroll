@@ -24,7 +24,11 @@ struct CategoryMenuSetting {
 class ColumnViewController: UIViewController, UIScrollViewDelegate, UIPageViewControllerDataSource, UINavigationControllerDelegate {
 
     //現在位置を保持するメンバ変数
-    fileprivate var currentDisplay: Int = 0
+    fileprivate var currentDisplay: Int = 0 {
+        didSet {
+            self.moveButtonScrollContents(page: currentDisplay)
+        }
+    }
 
     //ボタンスクロール時の移動量
     fileprivate var scrollButtonOffsetX: Int!
@@ -157,7 +161,6 @@ class ColumnViewController: UIViewController, UIScrollViewDelegate, UIPageViewCo
 
         //現在位置のインデックスを変数:currentDisplayに保持してタブを移動させる
         currentDisplay = index!
-        moveButtonScrollContents(page: currentDisplay)
         
         //インデックスの値に応じてコンテンツを動かす
         if index! <= 0 {
@@ -175,7 +178,6 @@ class ColumnViewController: UIViewController, UIScrollViewDelegate, UIPageViewCo
 
         //現在位置のインデックスを変数:currentDisplayに保持してタブを移動させる
         currentDisplay = index!
-        moveButtonScrollContents(page: index!)
 
         //インデックスの値に応じてコンテンツを動かす
         if index! >= categoryButtonCount - 1 {
@@ -218,9 +220,7 @@ class ColumnViewController: UIViewController, UIScrollViewDelegate, UIPageViewCo
         //コンテンツを押されたボタンに応じて移動する
         currentDisplay = page
 
-        pageViewController!.setViewControllers([viewControllerLists[page]], direction: targetDirection!, animated: true, completion: { finished in
-            self.moveButtonScrollContents(page: page)
-        })
+        pageViewController!.setViewControllers([viewControllerLists[page]], direction: targetDirection!, animated: false, completion: nil)
     }
 
     /* (Fileprivate Functions) */
