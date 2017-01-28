@@ -21,7 +21,7 @@ struct CategoryMenuSetting {
     static let movingLabelH = 2
 }
 
-class ColumnViewController: UIViewController, UIScrollViewDelegate, UIPageViewControllerDataSource, UINavigationControllerDelegate {
+class ColumnViewController: UIViewController, UIScrollViewDelegate, UIPageViewControllerDelegate, UIPageViewControllerDataSource, UINavigationControllerDelegate {
 
     //現在位置を保持するメンバ変数
     fileprivate var currentDisplay: Int = 0 {
@@ -75,7 +75,11 @@ class ColumnViewController: UIViewController, UIScrollViewDelegate, UIPageViewCo
             
             //TODO: 渡すパラメータに応じて表示が変わる（Alamofireと受け取る側のControllerのdidSetを併用？）
             
+            //TEST: ラベルに番号を入れる（後で削除）
             vc.labelStr = index.description
+
+            //「タグ番号 = インデックスの値」でスワイプ完了時にどのViewControllerかを判別できるようにする
+            vc.view.tag = index
             viewControllerLists.append(vc)
         }
         
@@ -83,6 +87,7 @@ class ColumnViewController: UIViewController, UIScrollViewDelegate, UIPageViewCo
         pageViewController = childViewControllers[0] as? UIPageViewController
         
         //UIPageViewControllerのデータソースの宣言
+        pageViewController!.delegate = self
         pageViewController!.dataSource = self
         
         //最初に表示する画面として配列の先頭のViewControllerを設定する
@@ -151,6 +156,27 @@ class ColumnViewController: UIViewController, UIScrollViewDelegate, UIPageViewCo
         }
     }
 
+    /* (UIPageViewControllerDelegate) */
+
+    //ページが動いたタイミング（この場合はスワイプアニメーションに該当）に発動する処理を記載するメソッド
+    //（実装例）http://c-geru.com/as_blind_side/2014/09/uipageviewcontroller.html
+    //（実装例に関する解説）http://chaoruko-tech.hatenablog.com/entry/2014/05/15/103811
+    //（公式ドキュメント）https://developer.apple.com/reference/uikit/uipageviewcontrollerdelegate
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+
+        //スワイプアニメーションが完了していない時には処理をさせなくする
+        if (!completed) {
+            return
+        }
+
+        //ここから先はUIPageViewControllerのスワイプアニメーション完了時に発動する
+        let pageItemController = pageViewController.viewControllers?.last
+        let currentPageIndex = pageItemController?.view.tag
+
+        //現在位置の表示インデクス番号をメンバ変数に格納（※didSetのタイミングでナビゲーションを動かす処理を発動する）
+        currentDisplay = currentPageIndex!
+    }
+
     /* (UIPageViewControllerDataSource) */
 
     //逆方向にページ送りした時に呼ばれるメソッド
@@ -159,15 +185,13 @@ class ColumnViewController: UIViewController, UIScrollViewDelegate, UIPageViewCo
         //インデックスを取得する
         let index = viewControllerLists.index(of: viewController as! ColumnListController)
 
-        //現在位置のインデックスを変数:currentDisplayに保持してタブを移動させる
-        currentDisplay = index!
-        
         //インデックスの値に応じてコンテンツを動かす
         if index! <= 0 {
             return nil
         } else {
             return viewControllerLists[index! - 1]
         }
+
     }
     
     //順方向にページ送りした時に呼ばれるメソッド
@@ -176,15 +200,13 @@ class ColumnViewController: UIViewController, UIScrollViewDelegate, UIPageViewCo
         //インデックスを取得する
         let index = viewControllerLists.index(of: viewController as! ColumnListController)
 
-        //現在位置のインデックスを変数:currentDisplayに保持してタブを移動させる
-        currentDisplay = index!
-
         //インデックスの値に応じてコンテンツを動かす
         if index! >= categoryButtonCount - 1 {
             return nil
         } else {
             return viewControllerLists[index! + 1]
         }
+
     }
 
     /* (Button Actions) */
@@ -207,6 +229,7 @@ class ColumnViewController: UIViewController, UIScrollViewDelegate, UIPageViewCo
         
         //遷移の方向用の変数を用意する
         var targetDirection: UIPageViewControllerNavigationDirection? = nil
+        var targetAnimated: Bool = false
         
         //現在位置と遷移先のインデックスの差分から動く方向を設定する
         if currentDisplay - page == 0 {
@@ -216,11 +239,19 @@ class ColumnViewController: UIViewController, UIScrollViewDelegate, UIPageViewCo
         } else if currentDisplay - page < 0 {
             targetDirection = .forward
         }
+
+        //遷移先がお隣さんであればアニメーションを有効にする
+        if abs(currentDisplay - page) == 1 {
+            targetAnimated = true
+        } else {
+            targetAnimated = false
+        }
         
-        //コンテンツを押されたボタンに応じて移動する
+        //現在位置の表示インデクス番号をメンバ変数に格納（※didSetのタイミングでナビゲーションを動かす処理を発動する）
         currentDisplay = page
 
-        pageViewController!.setViewControllers([viewControllerLists[page]], direction: targetDirection!, animated: false, completion: nil)
+        //ページのインデックス番号に該当するViewControllerを設定する
+        pageViewController!.setViewControllers([viewControllerLists[page]], direction: targetDirection!, animated: targetAnimated, completion: nil)
     }
 
     /* (Fileprivate Functions) */
