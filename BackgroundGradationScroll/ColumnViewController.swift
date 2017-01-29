@@ -162,10 +162,10 @@ class ColumnViewController: UIViewController, UIScrollViewDelegate, UIPageViewCo
     //（実装例）http://c-geru.com/as_blind_side/2014/09/uipageviewcontroller.html
     //（実装例に関する解説）http://chaoruko-tech.hatenablog.com/entry/2014/05/15/103811
     //（公式ドキュメント）https://developer.apple.com/reference/uikit/uipageviewcontrollerdelegate
-    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+    internal func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
 
         //スワイプアニメーションが完了していない時には処理をさせなくする
-        if (!completed) {
+        if !completed {
             return
         }
 
