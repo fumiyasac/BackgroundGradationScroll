@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -124,8 +124,9 @@
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="bottomImageViewConstraint" destination="u27-bA-MLR" id="2fq-iC-NQZ"/>
+                <outlet property="detailButton" destination="9nc-zF-OVj" id="WdU-JK-cx6"/>
                 <outlet property="imageImplView" destination="YJ3-as-K0J" id="Mmn-ln-Xai"/>
-                <outlet property="imageWrapView" destination="QAg-jI-IWh" id="mhj-xd-rY6"/>
+                <outlet property="imageWrapView" destination="QAg-jI-IWh" id="aKK-OQ-FLX"/>
                 <outlet property="topImageViewConstraint" destination="vfI-Gp-CQe" id="dAh-Da-77m"/>
             </connections>
         </tableViewCell>

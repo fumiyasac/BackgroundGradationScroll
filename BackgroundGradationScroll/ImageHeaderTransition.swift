@@ -86,5 +86,6 @@ class ImageHeaderTransition: NSObject, UIViewControllerAnimatedTransitioning {
 
             transitionContext.completeTransition(true)
         })
+        
     }
 }

@@ -44,7 +44,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var sideMenuContainerView: UIView!
 
     //タップ時に選択したimageViewを内包するUIViewを格納するための変数
-    var selectedWrapView: UIView?
+    //var selectedWrapView: UIView?
+    fileprivate var selectedButton: UIButton!
     
     //カスタムトランジション用クラスのインスタンス
     let transition = ImageHeaderTransition()
@@ -155,7 +156,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell?.showRestaurantDetailClosure = {
 
             //カスタムトランジションを適用した画面遷移を行う
-            self.selectedWrapView = cell?.imageWrapView
+            self.selectedButton = cell?.detailButton
 
             //遷移先のViewControllerの設定を行う
             let restaurantDetail = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "RestaurantDetailController") as! RestaurantDetailController
@@ -192,7 +193,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     internal func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
         //選択したサムネイル画像の位置とサイズの情報を引き渡す
-        transition.originalFrame = selectedWrapView!.superview!.convert(selectedWrapView!.frame, to: nil)
+        let targetButtonFrame = selectedButton!.superview!.convert(selectedButton!.frame, to: nil)
+        transition.originalFrame = CGRect(
+            x: targetButtonFrame.origin.x,
+            y: targetButtonFrame.origin.y,
+            width: 0,
+            height: 0
+        )
         transition.presenting = true
         return transition
     }

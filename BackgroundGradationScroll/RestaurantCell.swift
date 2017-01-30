@@ -16,6 +16,7 @@ class RestaurantCell: UITableViewCell {
     //UIパーツの配置
     @IBOutlet weak var imageWrapView: UIView!
     @IBOutlet weak var imageImplView: UIImageView!
+    @IBOutlet weak var detailButton: UIButton!
     
     //UIViewに内包したUIImageViewの上下の制約
     @IBOutlet weak var topImageViewConstraint: NSLayoutConstraint!
@@ -50,7 +51,7 @@ class RestaurantCell: UITableViewCell {
         bottomImageViewConstraint.constant = imgBackBottomInitial + pixelOffset
     }
     
-    //
+    //詳細画面へ遷移するためのアクション
     @IBAction func showDetailAction(_ sender: UIButton) {
 
         //
