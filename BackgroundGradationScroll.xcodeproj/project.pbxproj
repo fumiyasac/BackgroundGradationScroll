@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DE02985F1E308BBE00A0F875 /* ImageHeaderTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE02985E1E308BBE00A0F875 /* ImageHeaderTransition.swift */; };
+		DE02985F1E308BBE00A0F875 /* RestaurantDetailTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE02985E1E308BBE00A0F875 /* RestaurantDetailTransition.swift */; };
 		DE2CD2F71E19380F0098B06C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2CD2F61E19380F0098B06C /* AppDelegate.swift */; };
 		DE2CD2F91E19380F0098B06C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2CD2F81E19380F0098B06C /* ViewController.swift */; };
 		DE2CD2FE1E19380F0098B06C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE2CD2FD1E19380F0098B06C /* Assets.xcassets */; };
@@ -50,7 +50,7 @@
 		2FFBF185EE6D41A7102DD6ED /* Pods-BackgroundGradationScroll.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BackgroundGradationScroll.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BackgroundGradationScroll/Pods-BackgroundGradationScroll.debug.xcconfig"; sourceTree = "<group>"; };
 		33B796F7118EA93204DA7418 /* Pods-BackgroundGradationScroll.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BackgroundGradationScroll.release.xcconfig"; path = "Pods/Target Support Files/Pods-BackgroundGradationScroll/Pods-BackgroundGradationScroll.release.xcconfig"; sourceTree = "<group>"; };
 		B0A56F27604CAC4EF6ED4A73 /* Pods_BackgroundGradationScroll.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BackgroundGradationScroll.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DE02985E1E308BBE00A0F875 /* ImageHeaderTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageHeaderTransition.swift; sourceTree = "<group>"; };
+		DE02985E1E308BBE00A0F875 /* RestaurantDetailTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetailTransition.swift; sourceTree = "<group>"; };
 		DE2CD2F31E19380F0098B06C /* BackgroundGradationScroll.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BackgroundGradationScroll.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE2CD2F61E19380F0098B06C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE2CD2F81E19380F0098B06C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -277,7 +277,7 @@
 		DE6EA7211E295E0800AE5FE7 /* CustomTransition */ = {
 			isa = PBXGroup;
 			children = (
-				DE02985E1E308BBE00A0F875 /* ImageHeaderTransition.swift */,
+				DE02985E1E308BBE00A0F875 /* RestaurantDetailTransition.swift */,
 			);
 			name = CustomTransition;
 			sourceTree = "<group>";
@@ -483,7 +483,7 @@
 				DE2CD3271E1943FD0098B06C /* RestaurantCell.swift in Sources */,
 				DEAD9E631E3756FC0014DDA8 /* SidemenuController.swift in Sources */,
 				DE3414C71E2D19CF00A9D50C /* ColumnListController.swift in Sources */,
-				DE02985F1E308BBE00A0F875 /* ImageHeaderTransition.swift in Sources */,
+				DE02985F1E308BBE00A0F875 /* RestaurantDetailTransition.swift in Sources */,
 				DEC401B51E1E51CD00FFDE71 /* RestaurantDetailCell.swift in Sources */,
 				DE449FC21E364C3B00BEBE88 /* APIClientManager.swift in Sources */,
 				DEC401B31E1E2F6B00FFDE71 /* RestaurantDetailController.swift in Sources */,

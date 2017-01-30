@@ -42,13 +42,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var restaurantTableView: UITableView!
     @IBOutlet weak var sideMenuHandleButton: UIButton!
     @IBOutlet weak var sideMenuContainerView: UIView!
-
-    //タップ時に選択したimageViewを内包するUIViewを格納するための変数
-    //var selectedWrapView: UIView?
-    fileprivate var selectedButton: UIButton!
     
     //カスタムトランジション用クラスのインスタンス
-    let transition = ImageHeaderTransition()
+    let transition = RestaurantDetailTransition()
 
     //画面表示が開始された際のライフサイクル
     override func viewWillAppear(_ animated: Bool) {
@@ -77,6 +73,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         //Xibのセットアップ
         let nibTableView: UINib = UINib(nibName: "RestaurantCell", bundle: nil)
         restaurantTableView.register(nibTableView, forCellReuseIdentifier: "RestaurantCell")
+        
+        //サイドメニューバーのセットアップ
+        changeSideMenuStatus(sidebarStatus)
     }
 
     /* (viewDidLayoutSubviews) */
@@ -129,8 +128,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         //透過を変更するアニメーション
         let opacityAnimation = CABasicAnimation(keyPath: "opacity")
-        opacityAnimation.fromValue = 0.0
-        opacityAnimation.toValue = 1.0
+        opacityAnimation.fromValue = 0.00
+        opacityAnimation.toValue = 1.00
          
         //作成した個別のアニメーションをグループ化
         groupAnimation.animations = [opacityAnimation]
@@ -154,9 +153,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
         //セル内に配置したボタンを押下した際に発動されるアクションの内容を入れる
         cell?.showRestaurantDetailClosure = {
-
-            //カスタムトランジションを適用した画面遷移を行う
-            self.selectedButton = cell?.detailButton
 
             //遷移先のViewControllerの設定を行う
             let restaurantDetail = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "RestaurantDetailController") as! RestaurantDetailController
@@ -193,10 +189,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     internal func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
         //選択したサムネイル画像の位置とサイズの情報を引き渡す
-        let targetButtonFrame = selectedButton!.superview!.convert(selectedButton!.frame, to: nil)
         transition.originalFrame = CGRect(
-            x: targetButtonFrame.origin.x,
-            y: targetButtonFrame.origin.y,
+            x: self.view.frame.width / 2,
+            y: self.view.frame.height / 2,
             width: 0,
             height: 0
         )
@@ -241,22 +236,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if targetStatus == SidebarStatus.opened {
             
             //サイドメニューを表示状態にする
-            UIView.animate(withDuration: 0.16, delay: 0, options: .curveEaseOut, animations: {
+            UIView.animate(withDuration: 0.26, delay: 0, options: .curveEaseOut, animations: {
                 
                 self.sideMenuHandleButton.isEnabled = true
                 self.sideMenuHandleButton.alpha = 0.75
                 self.sideMenuContainerView.frame = CGRect(x: 0, y: 0, width: SidebarSettings.sidebarWidth, height: self.view.frame.height)
+                self.sideMenuContainerView.alpha = 1.00
                 
             }, completion: nil)
             
         } else {
             
             //サイドメニューを非表示状態にする
-            UIView.animate(withDuration: 0.16, delay: 0, options: .curveEaseOut, animations: {
+            UIView.animate(withDuration: 0.26, delay: 0, options: .curveEaseOut, animations: {
                 
                 self.sideMenuHandleButton.isEnabled = false
-                self.sideMenuHandleButton.alpha = 0
+                self.sideMenuHandleButton.alpha = 0.00
                 self.sideMenuContainerView.frame = CGRect(x: -SidebarSettings.sidebarWidth, y: 0, width: SidebarSettings.sidebarWidth, height: self.view.frame.height)
+                self.sideMenuContainerView.alpha = 0.00
 
             }, completion: nil)
         }
