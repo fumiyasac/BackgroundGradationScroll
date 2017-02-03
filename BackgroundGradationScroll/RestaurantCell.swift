@@ -14,8 +14,10 @@ class RestaurantCell: UITableViewCell {
     var showRestaurantDetailClosure: (() -> ())?
     
     //UIパーツの配置
+    @IBOutlet weak var shopNameLabel: UILabel!
     @IBOutlet weak var imageWrapView: UIView!
     @IBOutlet weak var imageImplView: UIImageView!
+    @IBOutlet weak var recommendPointLabel: UILabel!
     @IBOutlet weak var detailButton: UIButton!
     
     //UIViewに内包したUIImageViewの上下の制約
@@ -54,7 +56,7 @@ class RestaurantCell: UITableViewCell {
     //詳細画面へ遷移するためのアクション
     @IBAction func showDetailAction(_ sender: UIButton) {
 
-        //
+        //クロージャーの実行を行う(UITableView配置側で処理の実体を記載する)
         showRestaurantDetailClosure!()
     }
 

@@ -19,7 +19,7 @@ class RestaurantDetailTransition: NSObject, UIViewControllerAnimatedTransitionin
     let radius: CGFloat = 16.0
     
     //縮小値（※画面遷移時のCoreAnimation用）
-    let scale: CGFloat = 0.92
+    let scale: CGFloat = 0.96
     
     //トランジションの方向(present: true, dismiss: false)
     var presenting = true

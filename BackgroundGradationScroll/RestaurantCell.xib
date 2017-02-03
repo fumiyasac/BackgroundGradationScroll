@@ -127,6 +127,8 @@
                 <outlet property="detailButton" destination="9nc-zF-OVj" id="WdU-JK-cx6"/>
                 <outlet property="imageImplView" destination="YJ3-as-K0J" id="Mmn-ln-Xai"/>
                 <outlet property="imageWrapView" destination="QAg-jI-IWh" id="aKK-OQ-FLX"/>
+                <outlet property="recommendPointLabel" destination="A8U-9O-vBN" id="3g2-mE-WCk"/>
+                <outlet property="shopNameLabel" destination="Fgy-Vv-5P3" id="q8b-z0-kKC"/>
                 <outlet property="topImageViewConstraint" destination="vfI-Gp-CQe" id="dAh-Da-77m"/>
             </connections>
         </tableViewCell>
