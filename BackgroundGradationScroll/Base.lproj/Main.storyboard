@@ -167,7 +167,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RestaurantDetailCell" rowHeight="165" id="u6G-zV-7IW" customClass="RestaurantDetailCell" customModule="BackgroundGradationScroll" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RestaurantDetailCell" rowHeight="165" id="u6G-zV-7IW" customClass="MoreInfoCell" customModule="BackgroundGradationScroll" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="308" width="375" height="165"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="u6G-zV-7IW" id="zb0-E9-dsO">
@@ -203,6 +203,9 @@
                                                     <state key="normal" title="▼ Continue Reading">
                                                         <color key="titleColor" red="0.80000000000000004" green="0.59999999999999998" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="restaurantDetailToggleAction:" destination="u6G-zV-7IW" eventType="touchUpInside" id="0Kq-F2-gHS"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -228,8 +231,14 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="restaurantDetailText" destination="q4m-Gm-2Ap" id="C2g-6d-cjX"/>
+                                    <outlet property="restaurantDetailToggleButton" destination="xCU-Bw-med" id="ZeS-T4-ijY"/>
+                                    <outlet property="restaurantTitleLabel" destination="auz-qZ-vov" id="dYa-OK-fgc"/>
+                                    <outlet property="restaurantWrappedView" destination="kxK-sZ-3so" id="SWZ-Rp-mng"/>
+                                </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RestaurantInfoCell" rowHeight="341" id="P02-4C-roG">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MoreInfoCell" rowHeight="341" id="P02-4C-roG" customClass="RestaurantInfoCell" customModule="BackgroundGradationScroll" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="473" width="375" height="341"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P02-4C-roG" id="kea-xe-Gmf">
@@ -335,8 +344,19 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="moreInfoBudgetIcon" destination="wHS-CB-qH3" id="IKd-Hq-K70"/>
+                                    <outlet property="moreInfoBudgetLabel" destination="SIY-u0-PQ3" id="Mdb-Ja-gWy"/>
+                                    <outlet property="moreInfoGenreIcon" destination="qys-rv-IGt" id="VfG-89-4HF"/>
+                                    <outlet property="moreInfoGenreLabel" destination="C4e-e0-0yI" id="zD7-md-egX"/>
+                                    <outlet property="moreInfoMapView" destination="gMj-9D-Rrf" id="Lz1-Ne-VUs"/>
+                                    <outlet property="moreInfoMapWrappedView" destination="eP2-M0-cWq" id="mvq-2Z-Ytl"/>
+                                    <outlet property="moreInfoNameLabel" destination="rgz-V5-yam" id="jQD-0V-gig"/>
+                                    <outlet property="moreInfoOpenIcon" destination="qCx-X1-9VY" id="b7v-9a-7d3"/>
+                                    <outlet property="moreInfoOpenLabel" destination="cjU-Q0-jON" id="4mA-Mg-nBm"/>
+                                </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MoreInfoCell" rowHeight="264" id="iUC-3s-89g">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LinkInfoCell" rowHeight="264" id="iUC-3s-89g" customClass="LinkInfoCell" customModule="BackgroundGradationScroll" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="814" width="375" height="264"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iUC-3s-89g" id="X3F-x8-hsH">
@@ -362,6 +382,9 @@
                                             <state key="normal" title="Button">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="linkHotpepperAction:" destination="iUC-3s-89g" eventType="touchUpInside" id="nXg-me-2Ko"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RKr-ed-3wy">
                                             <rect key="frame" x="8" y="74" width="359" height="30"/>
@@ -373,6 +396,9 @@
                                             <state key="normal" title="Button">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="linkTabelogAction:" destination="iUC-3s-89g" eventType="touchUpInside" id="Kqj-GE-Wfv"/>
+                                            </connections>
                                         </button>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jnD-R1-Irj">
                                             <rect key="frame" x="8" y="112" width="359" height="135.5"/>
@@ -397,6 +423,12 @@
                                         <constraint firstItem="RKr-ed-3wy" firstAttribute="trailing" secondItem="X3F-x8-hsH" secondAttribute="trailingMargin" id="vTH-Em-DmB"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="linkHotpepperButton" destination="XoW-LZ-Ysw" id="NYZ-LK-Pjv"/>
+                                    <outlet property="linkNameLabel" destination="Bhk-NT-Baz" id="fPq-JY-K3a"/>
+                                    <outlet property="linkRemarkText" destination="jnD-R1-Irj" id="J7b-7T-6OB"/>
+                                    <outlet property="linkTabelogButton" destination="RKr-ed-3wy" id="ppk-HB-nLZ"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

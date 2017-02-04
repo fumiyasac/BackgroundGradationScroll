@@ -20,6 +20,9 @@
 		DE2F33C51E44B8BE002DD95D /* MenuMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2F33C41E44B8BE002DD95D /* MenuMaker.swift */; };
 		DE2F33C91E44BC7E002DD95D /* SideMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2F33C71E44BC7E002DD95D /* SideMenuCell.swift */; };
 		DE2F33CA1E44BC7E002DD95D /* SideMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE2F33C81E44BC7E002DD95D /* SideMenuCell.xib */; };
+		DE2F33CC1E45DC4F002DD95D /* MoreInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2F33CB1E45DC4E002DD95D /* MoreInfoCell.swift */; };
+		DE2F33CE1E45DD0A002DD95D /* LinkInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2F33CD1E45DD0A002DD95D /* LinkInfoCell.swift */; };
+		DE2F33D01E461C56002DD95D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE2F33CF1E461C56002DD95D /* MapKit.framework */; };
 		DE330D7E1E39F2EA004E12EE /* CenterCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE330D7D1E39F2EA004E12EE /* CenterCollectionViewFlowLayout.swift */; };
 		DE3414C71E2D19CF00A9D50C /* ColumnListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3414C61E2D19CF00A9D50C /* ColumnListController.swift */; };
 		DE449FC21E364C3B00BEBE88 /* APIClientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE449FC11E364C3B00BEBE88 /* APIClientManager.swift */; };
@@ -72,6 +75,9 @@
 		DE2F33C41E44B8BE002DD95D /* MenuMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuMaker.swift; sourceTree = "<group>"; };
 		DE2F33C71E44BC7E002DD95D /* SideMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuCell.swift; sourceTree = "<group>"; };
 		DE2F33C81E44BC7E002DD95D /* SideMenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SideMenuCell.xib; sourceTree = "<group>"; };
+		DE2F33CB1E45DC4E002DD95D /* MoreInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreInfoCell.swift; sourceTree = "<group>"; };
+		DE2F33CD1E45DD0A002DD95D /* LinkInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkInfoCell.swift; sourceTree = "<group>"; };
+		DE2F33CF1E461C56002DD95D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		DE330D7D1E39F2EA004E12EE /* CenterCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CenterCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		DE3414C61E2D19CF00A9D50C /* ColumnListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColumnListController.swift; sourceTree = "<group>"; };
 		DE449FC11E364C3B00BEBE88 /* APIClientManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClientManager.swift; sourceTree = "<group>"; };
@@ -89,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE2F33D01E461C56002DD95D /* MapKit.framework in Frameworks */,
 				E682619A8B3BFB6ED27C1AB5 /* Pods_BackgroundGradationScroll.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -122,6 +129,7 @@
 		D54A37D6B0EED52C6F186497 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DE2F33CF1E461C56002DD95D /* MapKit.framework */,
 				B0A56F27604CAC4EF6ED4A73 /* Pods_BackgroundGradationScroll.framework */,
 			);
 			name = Frameworks;
@@ -131,6 +139,8 @@
 			isa = PBXGroup;
 			children = (
 				DEC401B41E1E51CD00FFDE71 /* RestaurantDetailCell.swift */,
+				DE2F33CB1E45DC4E002DD95D /* MoreInfoCell.swift */,
+				DE2F33CD1E45DD0A002DD95D /* LinkInfoCell.swift */,
 			);
 			name = Detail;
 			sourceTree = "<group>";
@@ -506,8 +516,10 @@
 				DEC401B51E1E51CD00FFDE71 /* RestaurantDetailCell.swift in Sources */,
 				DE449FC21E364C3B00BEBE88 /* APIClientManager.swift in Sources */,
 				DEC401B31E1E2F6B00FFDE71 /* RestaurantDetailController.swift in Sources */,
+				DE2F33CC1E45DC4F002DD95D /* MoreInfoCell.swift in Sources */,
 				DE2F33C51E44B8BE002DD95D /* MenuMaker.swift in Sources */,
 				DE2CD2F91E19380F0098B06C /* ViewController.swift in Sources */,
+				DE2F33CE1E45DD0A002DD95D /* LinkInfoCell.swift in Sources */,
 				DE330D7E1E39F2EA004E12EE /* CenterCollectionViewFlowLayout.swift in Sources */,
 				DE2CD32A1E195C900098B06C /* ColorConverter.swift in Sources */,
 				DE2CD2F71E19380F0098B06C /* AppDelegate.swift in Sources */,
