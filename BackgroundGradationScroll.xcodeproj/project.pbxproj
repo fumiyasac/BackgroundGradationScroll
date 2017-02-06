@@ -27,6 +27,7 @@
 		DE3414C71E2D19CF00A9D50C /* ColumnListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3414C61E2D19CF00A9D50C /* ColumnListController.swift */; };
 		DE449FC21E364C3B00BEBE88 /* APIClientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE449FC11E364C3B00BEBE88 /* APIClientManager.swift */; };
 		DE4E6EF01E2BE80200D18C1F /* ColumnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4E6EEF1E2BE80200D18C1F /* ColumnViewController.swift */; };
+		DE50C63D1E484759006F07F4 /* ColumnListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE50C63C1E484759006F07F4 /* ColumnListCell.swift */; };
 		DE51288C1E3214950012FC73 /* Column.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE51288A1E3214950012FC73 /* Column.storyboard */; };
 		DE51288F1E3214A60012FC73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE51288D1E3214A60012FC73 /* Main.storyboard */; };
 		DEAD9E631E3756FC0014DDA8 /* SidemenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAD9E621E3756FC0014DDA8 /* SidemenuController.swift */; };
@@ -83,6 +84,7 @@
 		DE449FC11E364C3B00BEBE88 /* APIClientManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClientManager.swift; sourceTree = "<group>"; };
 		DE449FC41E364DBE00BEBE88 /* BackgroundGradationScroll-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BackgroundGradationScroll-Bridging-Header.h"; sourceTree = "<group>"; };
 		DE4E6EEF1E2BE80200D18C1F /* ColumnViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColumnViewController.swift; sourceTree = "<group>"; };
+		DE50C63C1E484759006F07F4 /* ColumnListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColumnListCell.swift; sourceTree = "<group>"; };
 		DE51288B1E3214950012FC73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Column.storyboard; sourceTree = "<group>"; };
 		DE51288E1E3214A60012FC73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DEAD9E621E3756FC0014DDA8 /* SidemenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidemenuController.swift; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 		DE4E6EF11E2BE8D900D18C1F /* ColumnList */ = {
 			isa = PBXGroup;
 			children = (
+				DE50C63C1E484759006F07F4 /* ColumnListCell.swift */,
 			);
 			name = ColumnList;
 			sourceTree = "<group>";
@@ -519,6 +522,7 @@
 				DE2F33CC1E45DC4F002DD95D /* MoreInfoCell.swift in Sources */,
 				DE2F33C51E44B8BE002DD95D /* MenuMaker.swift in Sources */,
 				DE2CD2F91E19380F0098B06C /* ViewController.swift in Sources */,
+				DE50C63D1E484759006F07F4 /* ColumnListCell.swift in Sources */,
 				DE2F33CE1E45DD0A002DD95D /* LinkInfoCell.swift in Sources */,
 				DE330D7E1E39F2EA004E12EE /* CenterCollectionViewFlowLayout.swift in Sources */,
 				DE2CD32A1E195C900098B06C /* ColorConverter.swift in Sources */,

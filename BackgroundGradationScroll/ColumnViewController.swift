@@ -76,7 +76,7 @@ class ColumnViewController: UIViewController, UIScrollViewDelegate, UIPageViewCo
             //TODO: 渡すパラメータに応じて表示が変わる（Alamofireと受け取る側のControllerのdidSetを併用？）
             
             //TEST: ラベルに番号を入れる（後で削除）
-            vc.labelStr = index.description
+            vc.targetIndex = index.description
 
             //「タグ番号 = インデックスの値」でスワイプ完了時にどのViewControllerかを判別できるようにする
             vc.view.tag = index
@@ -191,7 +191,6 @@ class ColumnViewController: UIViewController, UIScrollViewDelegate, UIPageViewCo
         } else {
             return viewControllerLists[index! - 1]
         }
-
     }
     
     //順方向にページ送りした時に呼ばれるメソッド
@@ -206,7 +205,6 @@ class ColumnViewController: UIViewController, UIScrollViewDelegate, UIPageViewCo
         } else {
             return viewControllerLists[index! + 1]
         }
-
     }
 
     /* (Button Actions) */

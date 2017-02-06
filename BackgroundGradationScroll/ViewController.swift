@@ -189,12 +189,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     internal func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
         //選択したサムネイル画像の位置とサイズの情報を引き渡す
-        transition.originalFrame = CGRect(
-            x: self.view.frame.width / 2,
-            y: self.view.frame.height / 2,
-            width: 0,
-            height: 0
-        )
+        transition.originalFrame = self.view.frame
         transition.presenting = true
         return transition
     }

@@ -55,6 +55,10 @@ class RestaurantDetailController: UITableViewController, UIViewControllerTransit
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //UITableViewのセルの高さに関する定義をする
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 10000.0
+        
         //バウンドするヘッダー部分の定義をする
         headerView = tableView.tableHeaderView
         tableView.tableHeaderView = nil
@@ -68,7 +72,6 @@ class RestaurantDetailController: UITableViewController, UIViewControllerTransit
         targetHeaderImageView.isUserInteractionEnabled = true
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(RestaurantDetailController.changeTargetHeaderImageView(sender:)))
         targetHeaderImageView.addGestureRecognizer(tapGesture)
-
     }
 
     //レイアウト処理が完了した際のライフサイクル
@@ -160,12 +163,23 @@ class RestaurantDetailController: UITableViewController, UIViewControllerTransit
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        var targerCell: UITableViewCell?
+        
         //TODO: セルをそれぞれのセクションごとに作成する
-        let cell = tableView.dequeueReusableCell(withIdentifier: "RestaurantDetailCell", for: indexPath)
+        switch indexPath.row {
+        case 0:
+            targerCell = tableView.dequeueReusableCell(withIdentifier: "RestaurantDetailCell", for: indexPath)
+        case 1:
+            targerCell = tableView.dequeueReusableCell(withIdentifier: "MoreInfoCell", for: indexPath)
+        case 2:
+            targerCell = tableView.dequeueReusableCell(withIdentifier: "LinkInfoCell", for: indexPath)
+        default:
+            fatalError()
+        }
 
-        cell.accessoryType = UITableViewCellAccessoryType.none
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
-        return cell
+        targerCell?.accessoryType = UITableViewCellAccessoryType.none
+        targerCell?.selectionStyle = UITableViewCellSelectionStyle.none
+        return targerCell!
     }
 
     /* (UIScrollViewDelegate) */

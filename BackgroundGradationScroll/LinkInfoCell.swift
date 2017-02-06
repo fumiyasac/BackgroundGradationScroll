@@ -11,7 +11,6 @@ import UIKit
 class LinkInfoCell: UITableViewCell {
 
     //UIパーツの配置
-    @IBOutlet weak var linkNameLabel: UILabel!
     @IBOutlet weak var linkHotpepperButton: UIButton!
     @IBOutlet weak var linkTabelogButton: UIButton!
     @IBOutlet weak var linkRemarkText: UITextView!

@@ -11,7 +11,6 @@ import UIKit
 class RestaurantDetailCell: UITableViewCell {
 
     //UIパーツの配置
-    @IBOutlet weak var restaurantTitleLabel: UILabel!
     @IBOutlet weak var restaurantWrappedView: UIView!
     @IBOutlet weak var restaurantDetailText: UITextView!
     @IBOutlet weak var restaurantDetailToggleButton: UIButton!

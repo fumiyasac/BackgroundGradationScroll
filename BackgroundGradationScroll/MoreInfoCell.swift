@@ -7,11 +7,11 @@
 //
 
 import UIKit
+import MapKit
 
-class MoreInfoCell: UITableViewCell, /*CLLocationManagerDelegate, */MKMapViewDelegate {
+class MoreInfoCell: UITableViewCell, CLLocationManagerDelegate, MKMapViewDelegate {
 
     //UIパーツの配置
-    @IBOutlet weak var moreInfoNameLabel: UILabel!
     @IBOutlet weak var moreInfoBudgetIcon: UIImageView!
     @IBOutlet weak var moreInfoBudgetLabel: UILabel!
     @IBOutlet weak var moreInfoOpenIcon: UIImageView!
@@ -23,6 +23,8 @@ class MoreInfoCell: UITableViewCell, /*CLLocationManagerDelegate, */MKMapViewDel
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        moreInfoMapView.delegate = self
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

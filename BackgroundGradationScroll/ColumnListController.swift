@@ -10,15 +10,17 @@ import UIKit
 
 class ColumnListController: UIViewController {
 
-    //テスト
-    @IBOutlet weak var testNumber: UILabel!
-    var labelStr: String?
+    //UIPageViewController側で設定したIndex値を格納するメンバ変数
+    var targetIndex: String? = nil
     
+    //UIパーツの配置
+    @IBOutlet weak var columnListCollectionView: UICollectionView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //テスト
-        testNumber.text = labelStr
+        //DEBUG: 受け取ったインデックス値の表示
+        print("受け取ったインデックス値：\(targetIndex)")
     }
 
     override func didReceiveMemoryWarning() {

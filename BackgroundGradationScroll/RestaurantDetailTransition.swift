@@ -54,16 +54,17 @@ class RestaurantDetailTransition: NSObject, UIViewControllerAnimatedTransitionin
         //始めと終わりのViewと
         var previousView: UIView!
         var targetView: UIView!
-        var initialFrame: CGRect!
-        var finalFrame: CGRect!
+        
+        //var initialFrame: CGRect!
+        //var finalFrame: CGRect!
         
         //Case1: 進む場合
         if presenting {
             
             previousView = fromView
             targetView = toView
-            initialFrame = originalFrame
-            finalFrame = targetView.frame
+            //initialFrame = originalFrame
+            //finalFrame = targetView.frame
             
             targetView.alpha = 0.00
             
@@ -72,17 +73,23 @@ class RestaurantDetailTransition: NSObject, UIViewControllerAnimatedTransitionin
             
             previousView = toView
             targetView = fromView
-            initialFrame = targetView.frame
-            finalFrame = originalFrame
+            //initialFrame = targetView.frame
+            //finalFrame = originalFrame
             
             targetView.alpha = 1.00
         }
         
-        targetView.frame = initialFrame
-        targetView.clipsToBounds = true
+        previousView.frame = originalFrame
+        previousView.transform = CGAffineTransform.identity
+        previousView.alpha = 1.00
 
+        targetView.frame = originalFrame
+        targetView.transform = CGAffineTransform(scaleX: self.scale, y: self.scale)
+        targetView.alpha = 0.00
+        
         //アニメーションの実体となるContainerViewに必要なものを追加する
         containerView.addSubview(previousView)
+        //containerView.addSubview(targetView)
         containerView.addSubview(toView)
         containerView.bringSubview(toFront: targetView)
         
@@ -99,8 +106,8 @@ class RestaurantDetailTransition: NSObject, UIViewControllerAnimatedTransitionin
             //Case1: 進む場合
             if self.presenting {
                 
-                previousView.transform = CGAffineTransform(scaleX: self.scale, y: self.scale)
-                previousView.alpha = 0.00
+                //previousView.transform = CGAffineTransform(scaleX: self.scale, y: self.scale)
+                //previousView.alpha = 0.00
                 
                 round.fromValue = 0.00
                 round.toValue = self.radius
@@ -121,8 +128,14 @@ class RestaurantDetailTransition: NSObject, UIViewControllerAnimatedTransitionin
                 targetAlpha = 0.00
             }
             
+            previousView.transform = CGAffineTransform(scaleX: self.scale, y: self.scale)
+            previousView.alpha = 0.00
+            
+            targetView.transform = CGAffineTransform.identity
+            targetView.alpha = 1.00
+            
             //アニメーションで変化させる値を決定する（大きさとアルファに関する値）
-            targetView.frame = finalFrame
+            targetView.frame = self.originalFrame
             targetView.alpha = targetAlpha
 
             //CoreAnimationで変化させる値を決定する（角丸の値）
