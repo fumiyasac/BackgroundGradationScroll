@@ -11,19 +11,19 @@ import Foundation
 import UIKit
 
 class RestaurantDetailTransition: NSObject, UIViewControllerAnimatedTransitioning {
-    
+
     //トランジションの秒数
-    let duration: TimeInterval = 0.26
-    
+    let duration: TimeInterval = 0.36
+
     //ポップアップ表示時の角丸の値（※画面遷移時のCoreAnimation用）
     let radius: CGFloat = 16.0
-    
+
     //縮小値（※画面遷移時のCoreAnimation用）
     let scale: CGFloat = 0.96
-    
+
     //トランジションの方向(present: true, dismiss: false)
     var presenting = true
-    
+
     //アニメーション対象なるサムネイル画像の位置やサイズ情報を格納するメンバ変数
     var originalFrame = CGRect.zero
 
@@ -31,7 +31,7 @@ class RestaurantDetailTransition: NSObject, UIViewControllerAnimatedTransitionin
     internal func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return duration
     }
-    
+
     /**
      * アニメーションの実装を定義する
      * この場合には画面遷移コンテキスト（UIViewControllerContextTransitioningを採用したオブジェクト）
@@ -43,53 +43,36 @@ class RestaurantDetailTransition: NSObject, UIViewControllerAnimatedTransitionin
         guard let fromView = transitionContext.view(forKey: UITransitionContextViewKey.from) else {
             return
         }
-        
+
         guard let toView = transitionContext.view(forKey: UITransitionContextViewKey.to) else {
             return
         }
         
-        //アニメーションの実体となるコンテナビューを作成
+        //アニメーションの実体となるコンテナビューを作成する
         let containerView = transitionContext.containerView
         
-        //始めと終わりのViewと
-        var previousView: UIView!
+        //表示させるViewControllerを格納するための変数を定義する
         var targetView: UIView!
-        
-        //var initialFrame: CGRect!
-        //var finalFrame: CGRect!
-        
+
         //Case1: 進む場合
         if presenting {
-            
-            previousView = fromView
+
             targetView = toView
-            //initialFrame = originalFrame
-            //finalFrame = targetView.frame
-            
             targetView.alpha = 0.00
             
         //Case2: 戻る場合
         } else {
-            
-            previousView = toView
+
             targetView = fromView
-            //initialFrame = targetView.frame
-            //finalFrame = originalFrame
-            
             targetView.alpha = 1.00
         }
-        
-        previousView.frame = originalFrame
-        previousView.transform = CGAffineTransform.identity
-        previousView.alpha = 1.00
 
+        //表示させるViewControllerに関する設定を行う
         targetView.frame = originalFrame
-        targetView.transform = CGAffineTransform(scaleX: self.scale, y: self.scale)
-        targetView.alpha = 0.00
+        targetView.clipsToBounds = true
         
         //アニメーションの実体となるContainerViewに必要なものを追加する
-        containerView.addSubview(previousView)
-        //containerView.addSubview(targetView)
+        containerView.addSubview(fromView)
         containerView.addSubview(toView)
         containerView.bringSubview(toFront: targetView)
         
@@ -99,41 +82,37 @@ class RestaurantDetailTransition: NSObject, UIViewControllerAnimatedTransitionin
             let round = CABasicAnimation(keyPath: "cornerRadius")
             round.duration = self.duration
             
-            //targetView（カスタムトランジションの元となるView）の値を格納する変数
+            //カスタムトランジションでViewControllerを表示させるViewの値を格納する変数
             var targetRadius: CGFloat
             var targetAlpha: CGFloat
             
             //Case1: 進む場合
             if self.presenting {
-                
-                //previousView.transform = CGAffineTransform(scaleX: self.scale, y: self.scale)
-                //previousView.alpha = 0.00
+
+                //遷移元のViewControllerが縮小して奥に引っ込める表現をする
+                fromView.transform = CGAffineTransform(scaleX: self.scale, y: self.scale)
+                fromView.alpha = 0.00
                 
                 round.fromValue = 0.00
                 round.toValue = self.radius
-                
+
                 targetRadius = self.radius
                 targetAlpha = 1.00
-                
+
             //Case2: 戻る場合
             } else {
 
+                //遷移先のViewControllerが拡大して奥から出てくる表現をする
                 toView.transform = CGAffineTransform.identity
                 toView.alpha = 1.00
 
                 round.fromValue = self.radius
                 round.toValue = 0.00
-                
+
                 targetRadius = 0.00
                 targetAlpha = 0.00
             }
-            
-            previousView.transform = CGAffineTransform(scaleX: self.scale, y: self.scale)
-            previousView.alpha = 0.00
-            
-            targetView.transform = CGAffineTransform.identity
-            targetView.alpha = 1.00
-            
+
             //アニメーションで変化させる値を決定する（大きさとアルファに関する値）
             targetView.frame = self.originalFrame
             targetView.alpha = targetAlpha
@@ -141,11 +120,11 @@ class RestaurantDetailTransition: NSObject, UIViewControllerAnimatedTransitionin
             //CoreAnimationで変化させる値を決定する（角丸の値）
             targetView.layer.add(round, forKey: nil)
             targetView.layer.cornerRadius = targetRadius
-            
+
         }, completion:{ finished in
 
             //遷移元のViewControllerを表示しているViewは消去しておく
-            previousView.removeFromSuperview()
+            fromView.removeFromSuperview()
             transitionContext.completeTransition(true)
         })
     }

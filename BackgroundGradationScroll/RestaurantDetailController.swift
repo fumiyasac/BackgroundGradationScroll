@@ -69,9 +69,6 @@ class RestaurantDetailController: UITableViewController, UIViewControllerTransit
 
         //ヘッダー内に設定したイメージビューにGestureRecognizerをつける
         targetHeaderImageView.image = firstDisplayImage
-        targetHeaderImageView.isUserInteractionEnabled = true
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(RestaurantDetailController.changeTargetHeaderImageView(sender:)))
-        targetHeaderImageView.addGestureRecognizer(tapGesture)
     }
 
     //レイアウト処理が完了した際のライフサイクル
@@ -204,11 +201,6 @@ class RestaurantDetailController: UITableViewController, UIViewControllerTransit
     }
     
     /* (Functions) */
-    
-    //ヘッダーのイメージビューのGestureRecognizer発動時に呼ばれる
-    func changeTargetHeaderImageView(sender: UITapGestureRecognizer) {
-        print("Target Header ImageTapped.")
-    }
 
     //ボタンをタップした際に行われる処理
     func scrollButtonTapped(button: UIButton) {
