@@ -30,6 +30,9 @@
 		DE50C63D1E484759006F07F4 /* ColumnListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE50C63C1E484759006F07F4 /* ColumnListCell.swift */; };
 		DE51288C1E3214950012FC73 /* Column.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE51288A1E3214950012FC73 /* Column.storyboard */; };
 		DE51288F1E3214A60012FC73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE51288D1E3214A60012FC73 /* Main.storyboard */; };
+		DE6EB56A1E4A2E11000A058F /* ColumnDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6EB5691E4A2E11000A058F /* ColumnDetailController.swift */; };
+		DE6EB56D1E4A3B0D000A058F /* ColumnContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6EB56C1E4A3B0D000A058F /* ColumnContainerController.swift */; };
+		DE6EB56F1E4A3B86000A058F /* ConvertHtmlText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6EB56E1E4A3B86000A058F /* ConvertHtmlText.swift */; };
 		DEAD9E631E3756FC0014DDA8 /* SidemenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAD9E621E3756FC0014DDA8 /* SidemenuController.swift */; };
 		DEC401B31E1E2F6B00FFDE71 /* RestaurantDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC401B21E1E2F6B00FFDE71 /* RestaurantDetailController.swift */; };
 		DEC401B51E1E51CD00FFDE71 /* RestaurantDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC401B41E1E51CD00FFDE71 /* RestaurantDetailCell.swift */; };
@@ -87,6 +90,9 @@
 		DE50C63C1E484759006F07F4 /* ColumnListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColumnListCell.swift; sourceTree = "<group>"; };
 		DE51288B1E3214950012FC73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Column.storyboard; sourceTree = "<group>"; };
 		DE51288E1E3214A60012FC73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DE6EB5691E4A2E11000A058F /* ColumnDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColumnDetailController.swift; sourceTree = "<group>"; };
+		DE6EB56C1E4A3B0D000A058F /* ColumnContainerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColumnContainerController.swift; sourceTree = "<group>"; };
+		DE6EB56E1E4A3B86000A058F /* ConvertHtmlText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvertHtmlText.swift; sourceTree = "<group>"; };
 		DEAD9E621E3756FC0014DDA8 /* SidemenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidemenuController.swift; sourceTree = "<group>"; };
 		DEC401B21E1E2F6B00FFDE71 /* RestaurantDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetailController.swift; sourceTree = "<group>"; };
 		DEC401B41E1E51CD00FFDE71 /* RestaurantDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetailCell.swift; sourceTree = "<group>"; };
@@ -206,6 +212,7 @@
 		DE2CD3241E1943BF0098B06C /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				DE6EB56B1E4A3AE1000A058F /* ColumnDetail */,
 				DE2F33C61E44BC4C002DD95D /* SideMenu */,
 				DE4E6EF11E2BE8D900D18C1F /* ColumnList */,
 				DE2B22761E1EAA810034C106 /* Detail */,
@@ -220,6 +227,7 @@
 				DE2F33C41E44B8BE002DD95D /* MenuMaker.swift */,
 				DE2CD3291E195C900098B06C /* ColorConverter.swift */,
 				DE449FC11E364C3B00BEBE88 /* APIClientManager.swift */,
+				DE6EB56E1E4A3B86000A058F /* ConvertHtmlText.swift */,
 			);
 			name = Structs;
 			sourceTree = "<group>";
@@ -264,6 +272,7 @@
 			children = (
 				DE4E6EEF1E2BE80200D18C1F /* ColumnViewController.swift */,
 				DE3414C61E2D19CF00A9D50C /* ColumnListController.swift */,
+				DE6EB5691E4A2E11000A058F /* ColumnDetailController.swift */,
 			);
 			name = Column;
 			sourceTree = "<group>";
@@ -310,6 +319,14 @@
 				DE02985E1E308BBE00A0F875 /* RestaurantDetailTransition.swift */,
 			);
 			name = CustomTransition;
+			sourceTree = "<group>";
+		};
+		DE6EB56B1E4A3AE1000A058F /* ColumnDetail */ = {
+			isa = PBXGroup;
+			children = (
+				DE6EB56C1E4A3B0D000A058F /* ColumnContainerController.swift */,
+			);
+			name = ColumnDetail;
 			sourceTree = "<group>";
 		};
 		DEC401B61E1E51DE00FFDE71 /* List */ = {
@@ -510,6 +527,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE6EB56A1E4A2E11000A058F /* ColumnDetailController.swift in Sources */,
 				DE4E6EF01E2BE80200D18C1F /* ColumnViewController.swift in Sources */,
 				DE2F33C91E44BC7E002DD95D /* SideMenuCell.swift in Sources */,
 				DE2CD3271E1943FD0098B06C /* RestaurantCell.swift in Sources */,
@@ -521,12 +539,14 @@
 				DEC401B31E1E2F6B00FFDE71 /* RestaurantDetailController.swift in Sources */,
 				DE2F33CC1E45DC4F002DD95D /* MoreInfoCell.swift in Sources */,
 				DE2F33C51E44B8BE002DD95D /* MenuMaker.swift in Sources */,
+				DE6EB56D1E4A3B0D000A058F /* ColumnContainerController.swift in Sources */,
 				DE2CD2F91E19380F0098B06C /* ViewController.swift in Sources */,
 				DE50C63D1E484759006F07F4 /* ColumnListCell.swift in Sources */,
 				DE2F33CE1E45DD0A002DD95D /* LinkInfoCell.swift in Sources */,
 				DE330D7E1E39F2EA004E12EE /* CenterCollectionViewFlowLayout.swift in Sources */,
 				DE2CD32A1E195C900098B06C /* ColorConverter.swift in Sources */,
 				DE2CD2F71E19380F0098B06C /* AppDelegate.swift in Sources */,
+				DE6EB56F1E4A3B86000A058F /* ConvertHtmlText.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
