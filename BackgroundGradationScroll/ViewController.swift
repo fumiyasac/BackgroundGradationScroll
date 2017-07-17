@@ -8,23 +8,19 @@
 
 import UIKit
 
-//サイドバーのステータス
-enum SidebarStatus {
-    case opened
-    case closed
-}
-
-//サイドバーに関するセッティング
-struct SidebarSettings {
-    static let sidebarWidth: CGFloat = 260.0
-}
-
-//パララックスに関するセッティング
-struct ParallaxSettings {
-    static let parallaxRatio: CGFloat = 0.24
-}
-
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate, UIViewControllerTransitioningDelegate {
+    
+    //サイドバーのステータス
+    enum SidebarStatus {
+        case opened
+        case closed
+    }
+
+    //サイドバーの表示幅の値
+    fileprivate let SIDEBAR_WIDTH: CGFloat = 260.0
+    
+    //パララックス値の移動値
+    fileprivate var PARALLAX_RATIO: CGFloat = 0.24
 
     //サイドバーのステータス値
     fileprivate var sidebarStatus: SidebarStatus = .closed
@@ -46,7 +42,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //カスタムトランジション用クラスのインスタンス
     let transition = RestaurantDetailTransition()
 
-    //画面表示が開始された際のライフサイクル
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        //ダミーヘッダービューのセットアップ
+        initializeDummyHeaderView()
+        
+        //グラデーションのセットアップ
+        setupBackgroundGradation()
+
+        //テーブルビューのセットアップ
+        initializeRestaurantTableView()
+        
+        //サイドメニューバーの初期状態のセットアップ
+        changeSideMenuStatus(sidebarStatus)
+    }
+    
+    /* MARK: - viewWillAppear - */
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -56,29 +69,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.navigationController!.navigationBar.tintColor = UIColor.white
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        //ダミーヘッダービューのセットアップ
-        initializeDummyHeaderView()
-        
-        //グラデーションのセットアップ
-        setupBackgroundGradation()
-        
-        //テーブルビューのセットアップ
-        restaurantTableView.delegate = self
-        restaurantTableView.dataSource = self
-        restaurantTableView.rowHeight = 309.5
-        
-        //Xibのセットアップ
-        let nibTableView: UINib = UINib(nibName: "RestaurantCell", bundle: nil)
-        restaurantTableView.register(nibTableView, forCellReuseIdentifier: "RestaurantCell")
-        
-        //サイドメニューバーのセットアップ
-        changeSideMenuStatus(sidebarStatus)
-    }
-
-    /* (viewDidLayoutSubviews) */
+    /* MARK: - viewDidLayoutSubviews - */
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -87,13 +78,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         sideMenuHandleButton.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         sideMenuHandleButton.isEnabled = false
         sideMenuHandleButton.alpha = 0
-        sideMenuContainerView.frame = CGRect(x: -SidebarSettings.sidebarWidth, y: 0, width: SidebarSettings.sidebarWidth, height: self.view.frame.height)
+        sideMenuContainerView.frame = CGRect(x: -SIDEBAR_WIDTH, y: 0, width: SIDEBAR_WIDTH, height: self.view.frame.height)
         
         navigationController?.view.addSubview(sideMenuHandleButton)
         navigationController?.view.addSubview(sideMenuContainerView)
     }
-    
-    /* (UITableViewDelegate) */
+
+    /* MARK: - UITableViewDelegate - */
     
     //テーブルのセクションのセル数を設定する
     internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -110,38 +101,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     internal func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
 
         let imageCell = cell as! RestaurantCell
-        setCellImageOffset(imageCell, indexPath: indexPath)
-        
-        /**
-         * CoreAnimationを利用したアニメーションをセルの表示時に付与する（拡大とアルファの重ねがけ）
-         *
-         * 参考:【iOS Swift入門 #185】Core Animationでアニメーションの加速・減速をする
-         * http://swift-studying.com/blog/swift/?p=1162
-         */
 
-        //アニメーションの作成
-        let groupAnimation = CAAnimationGroup()
-        groupAnimation.fillMode = kCAFillModeBackwards
-        groupAnimation.duration = 0.16
-        groupAnimation.beginTime = CACurrentMediaTime() + 0.08
-        groupAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
-        
-        //透過を変更するアニメーション
-        let opacityAnimation = CABasicAnimation(keyPath: "opacity")
-        opacityAnimation.fromValue = 0.00
-        opacityAnimation.toValue = 1.00
-         
-        //作成した個別のアニメーションをグループ化
-        groupAnimation.animations = [opacityAnimation]
-         
-        //セルのLayerにアニメーションを追加
-        cell.layer.add(groupAnimation, forKey: nil)
-         
-        //アニメーション終了後は元のサイズになるようにする
-        cell.layer.transform = CATransform3DIdentity
+        //セル内の画像のオフセット値を変更する
+        setCellImageOffset(imageCell, indexPath: indexPath)
+
+        //セルへフェードインのCoreAnimationを適用する
+        setCellFadeInAnimation(imageCell)
     }
 
-    /* (UITableViewDataSource) */
+    /* MARK: - UITableViewDataSource - */
 
     //表示するセルの中身を設定する
     internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -169,7 +137,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return cell!
     }
 
-    /* (UIScrollViewDelegate) */
+    /* MARK: - UIScrollViewDelegate - */
 
     //スクロールが検知された時に実行される処理
     internal func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -182,8 +150,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 setCellImageOffset(restaurantTableView.cellForRow(at: indexPath) as! RestaurantCell, indexPath: indexPath)
             }
         }
-        
     }
+    
+    /* MARK: - UIViewControllerTransitioningDelegate - */
     
     //進む場合のアニメーションの設定を行う
     internal func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
@@ -201,7 +170,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return transition
     }
 
-    /* (ButtonActions) */
+    /* MARK: - IBActions - */
 
     //サイドメニューを開くためのアクション
     @IBAction func openSideMenuAction(_ sender: UIButton) {
@@ -223,7 +192,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.navigationController?.pushViewController(columnView, animated: true)
     }
 
-    /* (Fileprivate Functions) */
+    /* MARK: - Fileprivate Functions - */
 
     //サイドメニューの開閉ハンドリング機能を実装する
     fileprivate func changeSideMenuStatus(_ targetStatus: SidebarStatus) {
@@ -235,7 +204,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 
                 self.sideMenuHandleButton.isEnabled = true
                 self.sideMenuHandleButton.alpha = 0.75
-                self.sideMenuContainerView.frame = CGRect(x: 0, y: 0, width: SidebarSettings.sidebarWidth, height: self.view.frame.height)
+                self.sideMenuContainerView.frame = CGRect(x: 0, y: 0, width: self.SIDEBAR_WIDTH, height: self.view.frame.height)
                 self.sideMenuContainerView.alpha = 1.00
                 
             }, completion: nil)
@@ -247,7 +216,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 
                 self.sideMenuHandleButton.isEnabled = false
                 self.sideMenuHandleButton.alpha = 0.00
-                self.sideMenuContainerView.frame = CGRect(x: -SidebarSettings.sidebarWidth, y: 0, width: SidebarSettings.sidebarWidth, height: self.view.frame.height)
+                self.sideMenuContainerView.frame = CGRect(x: -self.SIDEBAR_WIDTH, y: 0, width: self.SIDEBAR_WIDTH, height: self.view.frame.height)
                 self.sideMenuContainerView.alpha = 0.00
 
             }, completion: nil)
@@ -257,22 +226,53 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //UITableViewCell内のオフセット値を再計算して視差効果をつける
     fileprivate func setCellImageOffset(_ cell: RestaurantCell, indexPath: IndexPath) {
         
+        //TODO: 計算ロジックをコメントで残す
         let cellFrame = restaurantTableView.rectForRow(at: indexPath)
         let cellFrameInTable = restaurantTableView.convert(cellFrame, to: restaurantTableView.superview)
         let cellOffset = cellFrameInTable.origin.y + cellFrameInTable.size.height
         let tableHeight = restaurantTableView.bounds.size.height + cellFrameInTable.size.height
         let cellOffsetFactor = cellOffset / tableHeight
-        
+
         cell.setBackgroundOffset(cellOffsetFactor)
+    }
+
+    //UITableViewCellが表示されるタイミングにフェードインのアニメーションをつける
+    fileprivate func setCellFadeInAnimation(_ cell: RestaurantCell) {
+ 
+        /**
+         * CoreAnimationを利用したアニメーションをセルの表示時に付与する（拡大とアルファの重ねがけ）
+         *
+         * 参考:【iOS Swift入門 #185】Core Animationでアニメーションの加速・減速をする
+         * http://swift-studying.com/blog/swift/?p=1162
+         */
+
+        //アニメーションの作成
+        let groupAnimation = CAAnimationGroup()
+        groupAnimation.fillMode = kCAFillModeBackwards
+        groupAnimation.duration = 0.36
+        groupAnimation.beginTime = CACurrentMediaTime() + 0.08
+        groupAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
+        
+        //透過を変更するアニメーション
+        let opacityAnimation = CABasicAnimation(keyPath: "opacity")
+        opacityAnimation.fromValue = 0.00
+        opacityAnimation.toValue   = 1.00
+        
+        //作成した個別のアニメーションをグループ化
+        groupAnimation.animations = [opacityAnimation]
+        
+        //セルのLayerにアニメーションを追加
+        cell.layer.add(groupAnimation, forKey: nil)
+        
+        //アニメーション終了後は元のサイズになるようにする
+        cell.layer.transform = CATransform3DIdentity
     }
 
     //グラデーションの設定メソッド
     fileprivate func setupBackgroundGradation() {
 
-        //上部分のグラデーションの開始色
+        //上部分のグラデーションの開始色 ＆ 下部分のグラデーションの開始色
         let topColor = ColorConverter.colorWithHexString(hex: "666666", alpha: 0.35).cgColor
-        
-        //下部分のグラデーションの開始色
         let bottomColor = ColorConverter.colorWithHexString(hex: "000000", alpha: 0.75).cgColor
         
         //グラデーションの色を配列で管理
@@ -286,6 +286,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         //グラデーションレイヤーをビューの一番下に配置
         backgroundImageView.layer.insertSublayer(gradientLayer, at: 0)
+    }
+
+    //レストランデータのテーブルビューの初期化を行う
+    fileprivate func initializeRestaurantTableView() {
+
+        restaurantTableView.delegate = self
+        restaurantTableView.dataSource = self
+        restaurantTableView.rowHeight = 309.5
+
+        let nibTableView: UINib = UINib(nibName: "RestaurantCell", bundle: nil)
+        restaurantTableView.register(nibTableView, forCellReuseIdentifier: "RestaurantCell")
     }
     
     //ダミー用のヘッダービューの内容を設定する

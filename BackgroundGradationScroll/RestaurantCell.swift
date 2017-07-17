@@ -25,11 +25,11 @@ class RestaurantCell: UITableViewCell {
     @IBOutlet weak var bottomImageViewConstraint: NSLayoutConstraint!
 
     //視差効果のズレを生むための定数（大きいほど視差効果が大きい）
-    let imageParallaxFactor: CGFloat = 75
+    fileprivate let imageParallaxFactor: CGFloat = 75
     
     //視差効果の計算用の変数
-    var imgBackTopInitial: CGFloat!
-    var imgBackBottomInitial: CGFloat!
+    fileprivate var imgBackTopInitial: CGFloat!
+    fileprivate var imgBackBottomInitial: CGFloat!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -52,6 +52,8 @@ class RestaurantCell: UITableViewCell {
         topImageViewConstraint.constant = imgBackTopInitial - pixelOffset
         bottomImageViewConstraint.constant = imgBackBottomInitial + pixelOffset
     }
+
+    //
     
     //詳細画面へ遷移するためのアクション
     @IBAction func showDetailAction(_ sender: UIButton) {

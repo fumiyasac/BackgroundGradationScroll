@@ -36,6 +36,8 @@
 		DEAD9E631E3756FC0014DDA8 /* SidemenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAD9E621E3756FC0014DDA8 /* SidemenuController.swift */; };
 		DEC401B31E1E2F6B00FFDE71 /* RestaurantDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC401B21E1E2F6B00FFDE71 /* RestaurantDetailController.swift */; };
 		DEC401B51E1E51CD00FFDE71 /* RestaurantDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC401B41E1E51CD00FFDE71 /* RestaurantDetailCell.swift */; };
+		DEFB047E1F1CCEF200550917 /* SliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFB047C1F1CCEF200550917 /* SliderCell.swift */; };
+		DEFB047F1F1CCEF200550917 /* SliderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEFB047D1F1CCEF200550917 /* SliderCell.xib */; };
 		E682619A8B3BFB6ED27C1AB5 /* Pods_BackgroundGradationScroll.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0A56F27604CAC4EF6ED4A73 /* Pods_BackgroundGradationScroll.framework */; };
 /* End PBXBuildFile section */
 
@@ -96,6 +98,8 @@
 		DEAD9E621E3756FC0014DDA8 /* SidemenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidemenuController.swift; sourceTree = "<group>"; };
 		DEC401B21E1E2F6B00FFDE71 /* RestaurantDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetailController.swift; sourceTree = "<group>"; };
 		DEC401B41E1E51CD00FFDE71 /* RestaurantDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetailCell.swift; sourceTree = "<group>"; };
+		DEFB047C1F1CCEF200550917 /* SliderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderCell.swift; sourceTree = "<group>"; };
+		DEFB047D1F1CCEF200550917 /* SliderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SliderCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +216,7 @@
 		DE2CD3241E1943BF0098B06C /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				DEFB047B1F1CCB9700550917 /* Slider */,
 				DE6EB56B1E4A3AE1000A058F /* ColumnDetail */,
 				DE2F33C61E44BC4C002DD95D /* SideMenu */,
 				DE4E6EF11E2BE8D900D18C1F /* ColumnList */,
@@ -338,6 +343,15 @@
 			name = List;
 			sourceTree = "<group>";
 		};
+		DEFB047B1F1CCB9700550917 /* Slider */ = {
+			isa = PBXGroup;
+			children = (
+				DEFB047C1F1CCEF200550917 /* SliderCell.swift */,
+				DEFB047D1F1CCEF200550917 /* SliderCell.xib */,
+			);
+			name = Slider;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -452,6 +466,7 @@
 				DE51288C1E3214950012FC73 /* Column.storyboard in Resources */,
 				DE51288F1E3214A60012FC73 /* Main.storyboard in Resources */,
 				DE2CD3281E1943FD0098B06C /* RestaurantCell.xib in Resources */,
+				DEFB047F1F1CCEF200550917 /* SliderCell.xib in Resources */,
 				DE2CD3011E19380F0098B06C /* LaunchScreen.storyboard in Resources */,
 				DE2CD2FE1E19380F0098B06C /* Assets.xcassets in Resources */,
 				DE2F33CA1E44BC7E002DD95D /* SideMenuCell.xib in Resources */,
@@ -528,6 +543,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE6EB56A1E4A2E11000A058F /* ColumnDetailController.swift in Sources */,
+				DEFB047E1F1CCEF200550917 /* SliderCell.swift in Sources */,
 				DE4E6EF01E2BE80200D18C1F /* ColumnViewController.swift in Sources */,
 				DE2F33C91E44BC7E002DD95D /* SideMenuCell.swift in Sources */,
 				DE2CD3271E1943FD0098B06C /* RestaurantCell.swift in Sources */,
