@@ -26,6 +26,7 @@
 #include <map>
 
 #include <realm/util/logger.hpp>
+#include <realm/util/http.hpp>
 
 
 namespace realm {
@@ -60,7 +61,7 @@ public:
     /// websocket_handshake_completion_handler() is called when the websocket is connected, .i.e.
     /// after the handshake is done. It is not allowed to send messages on the socket before the
     /// handshake is done. No message_received callbacks will be called before the handshake is done.
-    virtual void websocket_handshake_completion_handler() = 0;
+    virtual void websocket_handshake_completion_handler(const HTTPHeaders&) = 0;
 
     //@{
     /// websocket_read_error_handler() and websocket_write_error_handler() are called when an
@@ -105,8 +106,6 @@ enum class Opcode {
 
 class Socket {
 public:
-    using HTTPHeaders = std::map<std::string, std::string>;
-
     Socket(Config&);
     Socket(Socket&&) noexcept;
     ~Socket() noexcept;
@@ -124,12 +123,21 @@ public:
     void initiate_client_handshake(std::string request_uri, std::string host,
                                    HTTPHeaders headers = HTTPHeaders{});
 
-    /// initiate_server_handshake() starts the Socket in server mode. It will wait for a
-    /// HTTP request from a client and respond with a HTTP response. After sending a HTTP
-    /// response, websocket_handshake_completion_handler() is called. Messages can only be sent and
-    /// received after the handshake has completed.
+    /// initiate_server_handshake() starts the Socket in server mode. It will
+    /// wait for a HTTP request from a client and respond with a HTTP response.
+    /// After sending a HTTP response, websocket_handshake_completion_handler()
+    /// is called. Messages can only be sent and received after the handshake
+    /// has completed.
     void initiate_server_handshake();
 
+    /// initiate_server_websocket_after_handshake() starts the Socket in a state
+    /// where it will read and write WebSocket messages but it will expect the
+    /// handshake to have been completed by the caller. The use of this
+    /// function is to perform HTTP routing externally and then start the
+    /// WebSocket in case the HTTP request is an Upgrade to WebSocket.
+    /// Typically, the caller will have used make_http_response() to send the
+    /// HTTP response itself.
+    void initiate_server_websocket_after_handshake();
 
     /// The async_write_* functions send frames. Only one frame should be sent at a time,
     /// meaning that the user must wait for the handler to be called before sending the next frame.
@@ -164,6 +172,11 @@ private:
     std::unique_ptr<Impl> m_impl;
 };
 
+/// make_http_response() takes \a request as a WebSocket handshake request,
+/// validates it, and makes a HTTP response. If the request is invalid, the
+/// return value is None, and ec is set to Error::bad_handshake_request.
+util::Optional<HTTPResponse> make_http_response(const HTTPRequest& request,
+        std::error_code& ec);
 
 enum class Error {
     bad_handshake_request  = 1, ///< Bad WebSocket handshake response received

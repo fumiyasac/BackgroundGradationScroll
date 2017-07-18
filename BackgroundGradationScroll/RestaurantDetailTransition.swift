@@ -19,7 +19,7 @@ class RestaurantDetailTransition: NSObject, UIViewControllerAnimatedTransitionin
     let radius: CGFloat = 16.0
 
     //縮小値（※画面遷移時のCoreAnimation用）
-    let scale: CGFloat = 0.96
+    let scale: CGFloat = 0.93
 
     //トランジションの方向(present: true, dismiss: false)
     var presenting = true
@@ -29,7 +29,7 @@ class RestaurantDetailTransition: NSObject, UIViewControllerAnimatedTransitionin
 
     //アニメーションの時間を定義する
     internal func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return duration
+        return  duration
     }
 
     /**
@@ -92,7 +92,7 @@ class RestaurantDetailTransition: NSObject, UIViewControllerAnimatedTransitionin
                 //遷移元のViewControllerが縮小して奥に引っ込める表現をする
                 fromView.transform = CGAffineTransform(scaleX: self.scale, y: self.scale)
                 fromView.alpha = 0.00
-                
+
                 round.fromValue = 0.00
                 round.toValue = self.radius
 
