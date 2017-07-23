@@ -1,5 +1,5 @@
 //
-//  RestaurantDetailTransition.swift
+//  FireworksDetailTransition.swift
 //  BackgroundGradationScroll
 //
 //  Created by 酒井文也 on 2017/01/19.
@@ -10,7 +10,7 @@ import Foundation
 
 import UIKit
 
-class RestaurantDetailTransition: NSObject, UIViewControllerAnimatedTransitioning {
+class FireworksDetailTransition: NSObject, UIViewControllerAnimatedTransitioning {
 
     //トランジションの秒数
     let duration: TimeInterval = 0.36

@@ -7,15 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DE02985F1E308BBE00A0F875 /* RestaurantDetailTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE02985E1E308BBE00A0F875 /* RestaurantDetailTransition.swift */; };
+		DE02985F1E308BBE00A0F875 /* FireworksDetailTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE02985E1E308BBE00A0F875 /* FireworksDetailTransition.swift */; };
 		DE2CD2F71E19380F0098B06C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2CD2F61E19380F0098B06C /* AppDelegate.swift */; };
 		DE2CD2F91E19380F0098B06C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2CD2F81E19380F0098B06C /* ViewController.swift */; };
 		DE2CD2FE1E19380F0098B06C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE2CD2FD1E19380F0098B06C /* Assets.xcassets */; };
 		DE2CD3011E19380F0098B06C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE2CD2FF1E19380F0098B06C /* LaunchScreen.storyboard */; };
 		DE2CD30C1E1938100098B06C /* BackgroundGradationScrollTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2CD30B1E1938100098B06C /* BackgroundGradationScrollTests.swift */; };
 		DE2CD3171E1938100098B06C /* BackgroundGradationScrollUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2CD3161E1938100098B06C /* BackgroundGradationScrollUITests.swift */; };
-		DE2CD3271E1943FD0098B06C /* RestaurantCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2CD3251E1943FD0098B06C /* RestaurantCell.swift */; };
-		DE2CD3281E1943FD0098B06C /* RestaurantCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE2CD3261E1943FD0098B06C /* RestaurantCell.xib */; };
+		DE2CD3271E1943FD0098B06C /* FireworksCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2CD3251E1943FD0098B06C /* FireworksCell.swift */; };
+		DE2CD3281E1943FD0098B06C /* FireworksCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE2CD3261E1943FD0098B06C /* FireworksCell.xib */; };
 		DE2CD32A1E195C900098B06C /* ColorConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2CD3291E195C900098B06C /* ColorConverter.swift */; };
 		DE2F33C51E44B8BE002DD95D /* MenuMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2F33C41E44B8BE002DD95D /* MenuMaker.swift */; };
 		DE2F33C91E44BC7E002DD95D /* SideMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2F33C71E44BC7E002DD95D /* SideMenuCell.swift */; };
@@ -30,12 +30,15 @@
 		DE50C63D1E484759006F07F4 /* ColumnListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE50C63C1E484759006F07F4 /* ColumnListCell.swift */; };
 		DE51288C1E3214950012FC73 /* Column.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE51288A1E3214950012FC73 /* Column.storyboard */; };
 		DE51288F1E3214A60012FC73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE51288D1E3214A60012FC73 /* Main.storyboard */; };
+		DE68E3631F249B43007FA217 /* NSObjectProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE68E3621F249B43007FA217 /* NSObjectProtocol.swift */; };
+		DE68E3691F24B6A7007FA217 /* StoryboardInstantiatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE68E3681F24B6A7007FA217 /* StoryboardInstantiatable.swift */; };
 		DE6EB56A1E4A2E11000A058F /* ColumnDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6EB5691E4A2E11000A058F /* ColumnDetailController.swift */; };
 		DE6EB56D1E4A3B0D000A058F /* ColumnContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6EB56C1E4A3B0D000A058F /* ColumnContainerController.swift */; };
 		DE6EB56F1E4A3B86000A058F /* ConvertHtmlText.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6EB56E1E4A3B86000A058F /* ConvertHtmlText.swift */; };
 		DEAD9E631E3756FC0014DDA8 /* SidemenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAD9E621E3756FC0014DDA8 /* SidemenuController.swift */; };
-		DEC401B31E1E2F6B00FFDE71 /* RestaurantDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC401B21E1E2F6B00FFDE71 /* RestaurantDetailController.swift */; };
-		DEC401B51E1E51CD00FFDE71 /* RestaurantDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC401B41E1E51CD00FFDE71 /* RestaurantDetailCell.swift */; };
+		DEB1060B1F217C05006C75CE /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEB1060A1F217C05006C75CE /* Detail.storyboard */; };
+		DEC401B31E1E2F6B00FFDE71 /* FireworksDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC401B21E1E2F6B00FFDE71 /* FireworksDetailController.swift */; };
+		DEC401B51E1E51CD00FFDE71 /* FireworksDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC401B41E1E51CD00FFDE71 /* FireworksDetailCell.swift */; };
 		DEFB047E1F1CCEF200550917 /* SliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFB047C1F1CCEF200550917 /* SliderCell.swift */; };
 		DEFB047F1F1CCEF200550917 /* SliderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEFB047D1F1CCEF200550917 /* SliderCell.xib */; };
 		E682619A8B3BFB6ED27C1AB5 /* Pods_BackgroundGradationScroll.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0A56F27604CAC4EF6ED4A73 /* Pods_BackgroundGradationScroll.framework */; };
@@ -62,7 +65,7 @@
 		2FFBF185EE6D41A7102DD6ED /* Pods-BackgroundGradationScroll.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BackgroundGradationScroll.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BackgroundGradationScroll/Pods-BackgroundGradationScroll.debug.xcconfig"; sourceTree = "<group>"; };
 		33B796F7118EA93204DA7418 /* Pods-BackgroundGradationScroll.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BackgroundGradationScroll.release.xcconfig"; path = "Pods/Target Support Files/Pods-BackgroundGradationScroll/Pods-BackgroundGradationScroll.release.xcconfig"; sourceTree = "<group>"; };
 		B0A56F27604CAC4EF6ED4A73 /* Pods_BackgroundGradationScroll.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BackgroundGradationScroll.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DE02985E1E308BBE00A0F875 /* RestaurantDetailTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetailTransition.swift; sourceTree = "<group>"; };
+		DE02985E1E308BBE00A0F875 /* FireworksDetailTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireworksDetailTransition.swift; sourceTree = "<group>"; };
 		DE2CD2F31E19380F0098B06C /* BackgroundGradationScroll.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BackgroundGradationScroll.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE2CD2F61E19380F0098B06C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE2CD2F81E19380F0098B06C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -75,8 +78,8 @@
 		DE2CD3121E1938100098B06C /* BackgroundGradationScrollUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BackgroundGradationScrollUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE2CD3161E1938100098B06C /* BackgroundGradationScrollUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundGradationScrollUITests.swift; sourceTree = "<group>"; };
 		DE2CD3181E1938100098B06C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DE2CD3251E1943FD0098B06C /* RestaurantCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantCell.swift; sourceTree = "<group>"; };
-		DE2CD3261E1943FD0098B06C /* RestaurantCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RestaurantCell.xib; sourceTree = "<group>"; };
+		DE2CD3251E1943FD0098B06C /* FireworksCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireworksCell.swift; sourceTree = "<group>"; };
+		DE2CD3261E1943FD0098B06C /* FireworksCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FireworksCell.xib; sourceTree = "<group>"; };
 		DE2CD3291E195C900098B06C /* ColorConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorConverter.swift; sourceTree = "<group>"; };
 		DE2F33C41E44B8BE002DD95D /* MenuMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuMaker.swift; sourceTree = "<group>"; };
 		DE2F33C71E44BC7E002DD95D /* SideMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuCell.swift; sourceTree = "<group>"; };
@@ -92,12 +95,15 @@
 		DE50C63C1E484759006F07F4 /* ColumnListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColumnListCell.swift; sourceTree = "<group>"; };
 		DE51288B1E3214950012FC73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Column.storyboard; sourceTree = "<group>"; };
 		DE51288E1E3214A60012FC73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DE68E3621F249B43007FA217 /* NSObjectProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSObjectProtocol.swift; sourceTree = "<group>"; };
+		DE68E3681F24B6A7007FA217 /* StoryboardInstantiatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardInstantiatable.swift; sourceTree = "<group>"; };
 		DE6EB5691E4A2E11000A058F /* ColumnDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColumnDetailController.swift; sourceTree = "<group>"; };
 		DE6EB56C1E4A3B0D000A058F /* ColumnContainerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColumnContainerController.swift; sourceTree = "<group>"; };
 		DE6EB56E1E4A3B86000A058F /* ConvertHtmlText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvertHtmlText.swift; sourceTree = "<group>"; };
 		DEAD9E621E3756FC0014DDA8 /* SidemenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SidemenuController.swift; sourceTree = "<group>"; };
-		DEC401B21E1E2F6B00FFDE71 /* RestaurantDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetailController.swift; sourceTree = "<group>"; };
-		DEC401B41E1E51CD00FFDE71 /* RestaurantDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantDetailCell.swift; sourceTree = "<group>"; };
+		DEB1060A1F217C05006C75CE /* Detail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
+		DEC401B21E1E2F6B00FFDE71 /* FireworksDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireworksDetailController.swift; sourceTree = "<group>"; };
+		DEC401B41E1E51CD00FFDE71 /* FireworksDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireworksDetailCell.swift; sourceTree = "<group>"; };
 		DEFB047C1F1CCEF200550917 /* SliderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderCell.swift; sourceTree = "<group>"; };
 		DEFB047D1F1CCEF200550917 /* SliderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SliderCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -150,7 +156,7 @@
 		DE2B22761E1EAA810034C106 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				DEC401B41E1E51CD00FFDE71 /* RestaurantDetailCell.swift */,
+				DEC401B41E1E51CD00FFDE71 /* FireworksDetailCell.swift */,
 				DE2F33CB1E45DC4E002DD95D /* MoreInfoCell.swift */,
 				DE2F33CD1E45DD0A002DD95D /* LinkInfoCell.swift */,
 			);
@@ -182,6 +188,7 @@
 		DE2CD2F51E19380F0098B06C /* BackgroundGradationScroll */ = {
 			isa = PBXGroup;
 			children = (
+				DE5BCE881F24812B00B8193A /* Protocols */,
 				DE6EA7201E295DFD00AE5FE7 /* Classes */,
 				DE6EA71F1E295AAF00AE5FE7 /* Storyboard */,
 				DE6EA71E1E295A9E00AE5FE7 /* ViewController */,
@@ -267,7 +274,6 @@
 			children = (
 				DEAD9E621E3756FC0014DDA8 /* SidemenuController.swift */,
 				DE2CD2F81E19380F0098B06C /* ViewController.swift */,
-				DEC401B21E1E2F6B00FFDE71 /* RestaurantDetailController.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -290,9 +296,19 @@
 			name = ColumnList;
 			sourceTree = "<group>";
 		};
+		DE5BCE881F24812B00B8193A /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				DE68E3621F249B43007FA217 /* NSObjectProtocol.swift */,
+				DE68E3681F24B6A7007FA217 /* StoryboardInstantiatable.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
 		DE6EA71E1E295A9E00AE5FE7 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				DEB1060C1F217F53006C75CE /* Detail */,
 				DE4E6EEE1E2BE7E000D18C1F /* Column */,
 				DE4E6EED1E2BE7D900D18C1F /* Main */,
 			);
@@ -304,6 +320,7 @@
 			children = (
 				DE51288D1E3214A60012FC73 /* Main.storyboard */,
 				DE51288A1E3214950012FC73 /* Column.storyboard */,
+				DEB1060A1F217C05006C75CE /* Detail.storyboard */,
 			);
 			name = Storyboard;
 			sourceTree = "<group>";
@@ -321,7 +338,7 @@
 		DE6EA7211E295E0800AE5FE7 /* CustomTransition */ = {
 			isa = PBXGroup;
 			children = (
-				DE02985E1E308BBE00A0F875 /* RestaurantDetailTransition.swift */,
+				DE02985E1E308BBE00A0F875 /* FireworksDetailTransition.swift */,
 			);
 			name = CustomTransition;
 			sourceTree = "<group>";
@@ -334,11 +351,19 @@
 			name = ColumnDetail;
 			sourceTree = "<group>";
 		};
+		DEB1060C1F217F53006C75CE /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				DEC401B21E1E2F6B00FFDE71 /* FireworksDetailController.swift */,
+			);
+			name = Detail;
+			sourceTree = "<group>";
+		};
 		DEC401B61E1E51DE00FFDE71 /* List */ = {
 			isa = PBXGroup;
 			children = (
-				DE2CD3251E1943FD0098B06C /* RestaurantCell.swift */,
-				DE2CD3261E1943FD0098B06C /* RestaurantCell.xib */,
+				DE2CD3251E1943FD0098B06C /* FireworksCell.swift */,
+				DE2CD3261E1943FD0098B06C /* FireworksCell.xib */,
 			);
 			name = List;
 			sourceTree = "<group>";
@@ -465,7 +490,8 @@
 			files = (
 				DE51288C1E3214950012FC73 /* Column.storyboard in Resources */,
 				DE51288F1E3214A60012FC73 /* Main.storyboard in Resources */,
-				DE2CD3281E1943FD0098B06C /* RestaurantCell.xib in Resources */,
+				DE2CD3281E1943FD0098B06C /* FireworksCell.xib in Resources */,
+				DEB1060B1F217C05006C75CE /* Detail.storyboard in Resources */,
 				DEFB047F1F1CCEF200550917 /* SliderCell.xib in Resources */,
 				DE2CD3011E19380F0098B06C /* LaunchScreen.storyboard in Resources */,
 				DE2CD2FE1E19380F0098B06C /* Assets.xcassets in Resources */,
@@ -543,16 +569,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE6EB56A1E4A2E11000A058F /* ColumnDetailController.swift in Sources */,
+				DE68E3691F24B6A7007FA217 /* StoryboardInstantiatable.swift in Sources */,
 				DEFB047E1F1CCEF200550917 /* SliderCell.swift in Sources */,
 				DE4E6EF01E2BE80200D18C1F /* ColumnViewController.swift in Sources */,
+				DE68E3631F249B43007FA217 /* NSObjectProtocol.swift in Sources */,
 				DE2F33C91E44BC7E002DD95D /* SideMenuCell.swift in Sources */,
-				DE2CD3271E1943FD0098B06C /* RestaurantCell.swift in Sources */,
+				DE2CD3271E1943FD0098B06C /* FireworksCell.swift in Sources */,
 				DEAD9E631E3756FC0014DDA8 /* SidemenuController.swift in Sources */,
 				DE3414C71E2D19CF00A9D50C /* ColumnListController.swift in Sources */,
-				DE02985F1E308BBE00A0F875 /* RestaurantDetailTransition.swift in Sources */,
-				DEC401B51E1E51CD00FFDE71 /* RestaurantDetailCell.swift in Sources */,
+				DE02985F1E308BBE00A0F875 /* FireworksDetailTransition.swift in Sources */,
+				DEC401B51E1E51CD00FFDE71 /* FireworksDetailCell.swift in Sources */,
 				DE449FC21E364C3B00BEBE88 /* APIClientManager.swift in Sources */,
-				DEC401B31E1E2F6B00FFDE71 /* RestaurantDetailController.swift in Sources */,
+				DEC401B31E1E2F6B00FFDE71 /* FireworksDetailController.swift in Sources */,
 				DE2F33CC1E45DC4F002DD95D /* MoreInfoCell.swift in Sources */,
 				DE2F33C51E44B8BE002DD95D /* MenuMaker.swift in Sources */,
 				DE6EB56D1E4A3B0D000A058F /* ColumnContainerController.swift in Sources */,

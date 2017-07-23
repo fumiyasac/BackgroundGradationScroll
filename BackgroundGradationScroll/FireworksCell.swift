@@ -1,5 +1,5 @@
 //
-//  RestaurantCell.swift
+//  FireworksCell.swift
 //  BackgroundGradationScroll
 //
 //  Created by 酒井文也 on 2017/01/01.
@@ -8,10 +8,10 @@
 
 import UIKit
 
-class RestaurantCell: UITableViewCell {
+class FireworksCell: UITableViewCell {
 
     //ViewController.swiftへ処理内容を引き渡すためのクロージャーを設定
-    var showRestaurantDetailClosure: (() -> ())?
+    var showFireworksDetailClosure: (() -> ())?
     
     //UIパーツの配置
     @IBOutlet weak var shopNameLabel: UILabel!
@@ -52,14 +52,12 @@ class RestaurantCell: UITableViewCell {
         topImageViewConstraint.constant = imgBackTopInitial - pixelOffset
         bottomImageViewConstraint.constant = imgBackBottomInitial + pixelOffset
     }
-
-    //
     
     //詳細画面へ遷移するためのアクション
     @IBAction func showDetailAction(_ sender: UIButton) {
 
         //クロージャーの実行を行う(UITableView配置側で処理の実体を記載する)
-        showRestaurantDetailClosure!()
+        showFireworksDetailClosure!()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

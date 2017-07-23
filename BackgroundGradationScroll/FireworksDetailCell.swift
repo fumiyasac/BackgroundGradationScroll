@@ -8,21 +8,21 @@
 
 import UIKit
 
-class RestaurantDetailCell: UITableViewCell {
+class FireworksDetailCell: UITableViewCell {
 
     //UIパーツの配置
-    @IBOutlet weak var restaurantWrappedView: UIView!
-    @IBOutlet weak var restaurantDetailText: UITextView!
-    @IBOutlet weak var restaurantDetailToggleButton: UIButton!
+    @IBOutlet weak var fireworksWrappedView: UIView!
+    @IBOutlet weak var fireworksDetailText: UITextView!
+    @IBOutlet weak var fireworksDetailToggleButton: UIButton!
 
     override func awakeFromNib() {
         super.awakeFromNib()
     }
 
     //詳細部分開閉用のボタンアクション
-    @IBAction func restaurantDetailToggleAction(_ sender: UIButton) {
+    @IBAction func fireworksDetailToggleAction(_ sender: UIButton) {
     }
-    
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }

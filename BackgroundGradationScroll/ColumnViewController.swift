@@ -341,3 +341,15 @@ class ColumnViewController: UIViewController, UIScrollViewDelegate, UIPageViewCo
     }
 
 }
+
+extension ColumnViewController: StoryboardInstantiatable {
+    
+    static var storyboardName: String {
+        return "Column"
+    }
+    
+    static var viewControllerIdentifier: String? {
+        return "ColumnViewController"
+    }
+    
+}

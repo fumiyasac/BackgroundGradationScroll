@@ -30,7 +30,7 @@ struct SlideMenuSetting {
  * http://blog.matthewcheok.com/design-teardown-stretchy-headers/
  */
 
-class RestaurantDetailController: UITableViewController, UIViewControllerTransitioningDelegate {
+class FireworksDetailController: UITableViewController, UIViewControllerTransitioningDelegate {
 
     //バウンドするヘッダーを作成するためのメンバ変数
     fileprivate var headerView: UIView!
@@ -109,7 +109,7 @@ class RestaurantDetailController: UITableViewController, UIViewControllerTransit
                 buttonElement.setTitleColor(UIColor.white, for: UIControlState())
                 buttonElement.titleLabel!.font = fontSetting
                 buttonElement.tag = i
-                buttonElement.addTarget(self, action: #selector(RestaurantDetailController.scrollButtonTapped(button:)), for: .touchUpInside)
+                buttonElement.addTarget(self, action: #selector(self.scrollButtonTapped(button:)), for: .touchUpInside)
                 
                 //一番最初に配置されるタイミングで動くラベルを初期化（今回は画面遷移後の画面が動くラベルが左端にある時を想定している）
                 if i == 0 {
@@ -165,7 +165,7 @@ class RestaurantDetailController: UITableViewController, UIViewControllerTransit
         //TODO: セルをそれぞれのセクションごとに作成する
         switch indexPath.row {
         case 0:
-            targerCell = tableView.dequeueReusableCell(withIdentifier: "RestaurantDetailCell", for: indexPath)
+            targerCell = tableView.dequeueReusableCell(withIdentifier: "FireworksDetailCell", for: indexPath)
         case 1:
             targerCell = tableView.dequeueReusableCell(withIdentifier: "MoreInfoCell", for: indexPath)
         case 2:
@@ -332,3 +332,17 @@ class RestaurantDetailController: UITableViewController, UIViewControllerTransit
     }
 
 }
+
+extension FireworksDetailController: StoryboardInstantiatable {
+
+    //
+    static var storyboardName: String {
+        return "Detail"
+    }
+
+    //
+    static var viewControllerIdentifier: String? {
+        return "FireworksDetailController"
+    }
+}
+
