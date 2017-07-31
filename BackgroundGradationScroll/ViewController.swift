@@ -9,18 +9,24 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
+
     //サイドバーのステータス
-    enum SidebarStatus {
+    fileprivate enum SidebarStatus {
         case opened
         case closed
+    }
+
+    //コンテンツ用テーブルビューのステータス
+    fileprivate enum SectionStatus: Int {
+        case slider
+        case fireworks
     }
 
     //サイドバーの表示幅の値
     fileprivate let SIDEBAR_WIDTH: CGFloat = 260.0
     
     //パララックス値の移動値
-    fileprivate var PARALLAX_RATIO: CGFloat = 0.24
+    fileprivate let PARALLAX_RATIO: CGFloat = 0.24
 
     //サイドバーのステータス値
     fileprivate var sidebarStatus: SidebarStatus = .closed
@@ -44,12 +50,12 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         //UIに関する初期設定のセットアップを行う
         setupHeaderView()
         setupBackgroundGradation()
         setupFireworksTableView()
-        
+
         //サイドメニューバーの初期状態のセットアップ
         changeSideMenuStatus(sidebarStatus)
     }
@@ -74,8 +80,8 @@ class ViewController: UIViewController {
         sideMenuHandleButton.frame     = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         sideMenuHandleButton.isEnabled = false
         sideMenuHandleButton.alpha     = 0
-        sideMenuContainerView.frame = CGRect(x: -SIDEBAR_WIDTH, y: 0, width: SIDEBAR_WIDTH, height: self.view.frame.height)
-        
+        sideMenuContainerView.frame    = CGRect(x: -SIDEBAR_WIDTH, y: 0, width: SIDEBAR_WIDTH, height: self.view.frame.height)
+
         navigationController?.view.addSubview(sideMenuHandleButton)
         navigationController?.view.addSubview(sideMenuContainerView)
     }
@@ -170,7 +176,7 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDelegate, UIScrollViewDelegate {
     
     /* MARK: - UITableViewDelegate - */
-    
+
     //セルを表示しようとする時の動作を設定する
     /**
      * willDisplay(UITableViewDelegateのメソッド)に関して
@@ -180,6 +186,7 @@ extension ViewController: UITableViewDelegate, UIScrollViewDelegate {
      */
     internal func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
 
+        //FireworksCell型へダウンキャストする
         let imageCell = cell as! FireworksCell
         
         //セル内の画像のオフセット値を変更する
@@ -213,7 +220,7 @@ extension ViewController: UITableViewDelegate, UIScrollViewDelegate {
         let cellOffset = cellFrameInTable.origin.y + cellFrameInTable.size.height
         let tableHeight = fireworksTableView.bounds.size.height + cellFrameInTable.size.height
         let cellOffsetFactor = cellOffset / tableHeight
-        
+
         cell.setBackgroundOffset(cellOffsetFactor)
     }
     
@@ -253,7 +260,12 @@ extension ViewController: UITableViewDelegate, UIScrollViewDelegate {
 extension ViewController: UITableViewDataSource {
 
     /* MARK: - UITableViewDataSource - */
-    
+
+    //テーブルのセクション数を設定する
+    internal func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+
     //テーブルのセクションのセル数を設定する
     internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 20

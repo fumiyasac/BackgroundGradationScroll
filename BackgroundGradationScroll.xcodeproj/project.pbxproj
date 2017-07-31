@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		DE02985F1E308BBE00A0F875 /* FireworksDetailTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE02985E1E308BBE00A0F875 /* FireworksDetailTransition.swift */; };
+		DE187A661F251F7900D02181 /* FireWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE187A651F251F7900D02181 /* FireWork.swift */; };
+		DE187A681F251F8E00D02181 /* Column.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE187A671F251F8E00D02181 /* Column.swift */; };
 		DE2CD2F71E19380F0098B06C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2CD2F61E19380F0098B06C /* AppDelegate.swift */; };
 		DE2CD2F91E19380F0098B06C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2CD2F81E19380F0098B06C /* ViewController.swift */; };
 		DE2CD2FE1E19380F0098B06C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE2CD2FD1E19380F0098B06C /* Assets.xcassets */; };
@@ -66,6 +68,8 @@
 		33B796F7118EA93204DA7418 /* Pods-BackgroundGradationScroll.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BackgroundGradationScroll.release.xcconfig"; path = "Pods/Target Support Files/Pods-BackgroundGradationScroll/Pods-BackgroundGradationScroll.release.xcconfig"; sourceTree = "<group>"; };
 		B0A56F27604CAC4EF6ED4A73 /* Pods_BackgroundGradationScroll.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BackgroundGradationScroll.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE02985E1E308BBE00A0F875 /* FireworksDetailTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireworksDetailTransition.swift; sourceTree = "<group>"; };
+		DE187A651F251F7900D02181 /* FireWork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireWork.swift; sourceTree = "<group>"; };
+		DE187A671F251F8E00D02181 /* Column.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Column.swift; sourceTree = "<group>"; };
 		DE2CD2F31E19380F0098B06C /* BackgroundGradationScroll.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BackgroundGradationScroll.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE2CD2F61E19380F0098B06C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE2CD2F81E19380F0098B06C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -153,6 +157,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		DE187A631F251F4200D02181 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DE187A651F251F7900D02181 /* FireWork.swift */,
+				DE187A671F251F8E00D02181 /* Column.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		DE2B22761E1EAA810034C106 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +201,7 @@
 		DE2CD2F51E19380F0098B06C /* BackgroundGradationScroll */ = {
 			isa = PBXGroup;
 			children = (
+				DE187A631F251F4200D02181 /* Models */,
 				DE5BCE881F24812B00B8193A /* Protocols */,
 				DE6EA7201E295DFD00AE5FE7 /* Classes */,
 				DE6EA71F1E295AAF00AE5FE7 /* Storyboard */,
@@ -569,6 +583,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE6EB56A1E4A2E11000A058F /* ColumnDetailController.swift in Sources */,
+				DE187A681F251F8E00D02181 /* Column.swift in Sources */,
 				DE68E3691F24B6A7007FA217 /* StoryboardInstantiatable.swift in Sources */,
 				DEFB047E1F1CCEF200550917 /* SliderCell.swift in Sources */,
 				DE4E6EF01E2BE80200D18C1F /* ColumnViewController.swift in Sources */,
@@ -582,6 +597,7 @@
 				DE449FC21E364C3B00BEBE88 /* APIClientManager.swift in Sources */,
 				DEC401B31E1E2F6B00FFDE71 /* FireworksDetailController.swift in Sources */,
 				DE2F33CC1E45DC4F002DD95D /* MoreInfoCell.swift in Sources */,
+				DE187A661F251F7900D02181 /* FireWork.swift in Sources */,
 				DE2F33C51E44B8BE002DD95D /* MenuMaker.swift in Sources */,
 				DE6EB56D1E4A3B0D000A058F /* ColumnContainerController.swift in Sources */,
 				DE2CD2F91E19380F0098B06C /* ViewController.swift in Sources */,

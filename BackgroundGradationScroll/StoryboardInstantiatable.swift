@@ -6,27 +6,38 @@
 //  Copyright © 2017年 just1factory. All rights reserved.
 //
 
+//StoryboardからViewControllerを生成するProtocol
+//参考：http://blog.sgr-ksmt.org/2016/05/05/storyboard_instantiatable/
 public protocol StoryboardInstantiatable {
 
+    //インスタンス化の際に必要な変数の定義
     static var storyboardName: String { get }
     static var viewControllerIdentifier: String? { get }
     static var bundle: Bundle? { get }
 }
 
+//プロトコル「StoryboardInstantiatable」の実装定義 ※UIViewControllerとそのサブクラスになるように定義
 extension StoryboardInstantiatable where Self: UIViewController {
+
+    //Storyboard名のプロパティ
     static var storyboardName: String {
         return String(describing: self)
     }
-    
+
+    //ViewControllerIdentifier名のプロパティ(特に必要がなければ設定しなくてもよい)
     static var viewControllerIdentifier: String? {
         return nil
     }
-    
+
+    //Bundle名のプロパティ(特に必要がなければ設定しなくてもよい)
     static var bundle: Bundle? {
         return nil
     }
-    
+
+    //Storyboardからインスタンス化するメソッド
     static func instantiate() -> Self {
+
+        //StoryboardからViewControllerのインスタンス化をする（定義したプロパティの情報を元に行う）
         let loadViewController = { () -> UIViewController? in
             let storyboard = UIStoryboard(name: storyboardName, bundle: bundle)
             if let viewControllerIdentifier = viewControllerIdentifier {
@@ -35,7 +46,8 @@ extension StoryboardInstantiatable where Self: UIViewController {
                 return storyboard.instantiateInitialViewController()
             }
         }
-        
+
+        //Storyboardから作成できない場合は意図的にクラッシュさせる
         guard let viewController = loadViewController() as? Self else {
             fatalError([
                 "Failed to load viewcontroller from storyboard.",
