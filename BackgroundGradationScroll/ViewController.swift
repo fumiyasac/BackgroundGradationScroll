@@ -57,7 +57,7 @@ class ViewController: UIViewController {
         setupFireworksTableView()
 
         //サイドメニューバーの初期状態のセットアップ
-        changeSideMenuStatus(sidebarStatus)
+        setSideMenuStatus(sidebarStatus)
     }
     
     /* MARK: - viewWillAppear - */
@@ -91,13 +91,13 @@ class ViewController: UIViewController {
     //サイドメニューを開くためのアクション
     @IBAction func openSideMenuAction(_ sender: UIButton) {
         sidebarStatus = .opened
-        changeSideMenuStatus(sidebarStatus)
+        setSideMenuStatus(sidebarStatus)
     }
 
     //サイドメニューを閉じるためのアクション
     @IBAction func closeSideMenuAction(_ sender: UIButton) {
         sidebarStatus = .closed
-        changeSideMenuStatus(sidebarStatus)
+        setSideMenuStatus(sidebarStatus)
     }
 
     //コラム用コンテンツを開くアクション
@@ -109,7 +109,7 @@ class ViewController: UIViewController {
     /* MARK: - Fileprivate Functions - */
 
     //サイドメニューの開閉ハンドリング機能を実装する
-    fileprivate func changeSideMenuStatus(_ targetStatus: SidebarStatus) {
+    fileprivate func setSideMenuStatus(_ targetStatus: SidebarStatus) {
         
         if targetStatus == SidebarStatus.opened {
 
@@ -242,7 +242,7 @@ extension ViewController: UITableViewDelegate, UIScrollViewDelegate {
         groupAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
         
         //透過を変更するアニメーション
-        let opacityAnimation       = CABasicAnimation(keyPath: "opacity")
+        let opacityAnimation       = CABasicAnimation(keyPath: " opacity")
         opacityAnimation.fromValue = 0.00
         opacityAnimation.toValue   = 1.00
         
@@ -310,7 +310,7 @@ extension ViewController: UIViewControllerTransitioningDelegate {
         transition.presenting    = true
         return transition
     }
-    
+
     //戻る場合のアニメーションの設定を行う
     internal func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
