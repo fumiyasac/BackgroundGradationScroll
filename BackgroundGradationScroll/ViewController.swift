@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     }
 
     //サイドバーの表示幅の値
-    fileprivate let SIDEBAR_WIDTH: CGFloat = 260.0
+    fileprivate let SIDEBAR_WIDTH = 260
     
     //パララックス値の移動値
     fileprivate let PARALLAX_RATIO: CGFloat = 0.24
@@ -64,26 +64,22 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        //NavigationControllerのカスタマイズを行う(ナビゲーションを透明にする)
-        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController!.navigationBar.shadowImage = UIImage()
-        self.navigationController!.navigationBar.tintColor = UIColor.white
+        setupNavigationBarSetting()
     }
 
     /* MARK: - viewDidLayoutSubviews - */
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
+
         //サイドメニューの初期位置設定と配置を行う
-        sideMenuHandleButton.frame     = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+        sideMenuHandleButton.frame     = CGRect(x: 0, y: 0, width: DeviceSize.screenWidthToInt(), height: DeviceSize.screenHeightToInt())
         sideMenuHandleButton.isEnabled = false
         sideMenuHandleButton.alpha     = 0
-        sideMenuContainerView.frame    = CGRect(x: -SIDEBAR_WIDTH, y: 0, width: SIDEBAR_WIDTH, height: self.view.frame.height)
+        sideMenuContainerView.frame    = CGRect(x: -SIDEBAR_WIDTH, y: 0, width: SIDEBAR_WIDTH, height: DeviceSize.screenHeightToInt())
 
-        navigationController?.view.addSubview(sideMenuHandleButton)
-        navigationController?.view.addSubview(sideMenuContainerView)
+        self.navigationController?.view.addSubview(sideMenuHandleButton)
+        self.navigationController?.view.addSubview(sideMenuContainerView)
     }
 
     /* MARK: - IBActions - */
@@ -108,6 +104,13 @@ class ViewController: UIViewController {
 
     /* MARK: - Fileprivate Functions - */
 
+    //NavigationControllerのカスタマイズを行う(ナビゲーションを透明にする)
+    fileprivate func setupNavigationBarSetting() {
+        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController!.navigationBar.shadowImage = UIImage()
+        self.navigationController!.navigationBar.tintColor = UIColor.white
+    }
+
     //サイドメニューの開閉ハンドリング機能を実装する
     fileprivate func setSideMenuStatus(_ targetStatus: SidebarStatus) {
         
@@ -118,7 +121,7 @@ class ViewController: UIViewController {
                 self.sideMenuHandleButton.isEnabled = true
                 self.sideMenuHandleButton.alpha     = 0.75
                 self.sideMenuContainerView.alpha    = 1.00
-                self.sideMenuContainerView.frame    = CGRect(x: 0, y: 0, width: self.SIDEBAR_WIDTH, height: self.view.frame.height)
+                self.sideMenuContainerView.frame    = CGRect(x: 0, y: 0, width: self.SIDEBAR_WIDTH, height: DeviceSize.screenHeightToInt())
             }, completion: nil)
 
         } else {
@@ -128,11 +131,11 @@ class ViewController: UIViewController {
                 self.sideMenuHandleButton.isEnabled = false
                 self.sideMenuHandleButton.alpha     = 0.00
                 self.sideMenuContainerView.alpha    = 0.00
-                self.sideMenuContainerView.frame    = CGRect(x: -self.SIDEBAR_WIDTH, y: 0, width: self.SIDEBAR_WIDTH, height: self.view.frame.height)
+                self.sideMenuContainerView.frame    = CGRect(x: -self.SIDEBAR_WIDTH, y: 0, width: self.SIDEBAR_WIDTH, height: DeviceSize.screenHeightToInt())
             }, completion: nil)
         }
     }
-
+    
     //背景グラデーションの初期化を行う
     fileprivate func setupBackgroundGradation() {
 

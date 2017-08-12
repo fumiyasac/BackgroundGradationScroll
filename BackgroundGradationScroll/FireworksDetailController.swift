@@ -50,7 +50,7 @@ class FireworksDetailController: UITableViewController {
     //ヘッダー部分のImageView
     @IBOutlet weak var targetHeaderImageView: UIImageView!
 
-    //ヘッダー下部分にあるスクロールビューのボタン分割数
+    //ヘッダー下部分にあるスクロールビューの画面あたりのボタン表示数
     fileprivate let buttonSeparateValue = 3
     
     //ヘッダー下部分にあるスクロールビューのボタンのフォント定義
@@ -320,7 +320,7 @@ class FireworksDetailController: UITableViewController {
         
         /**
          * 下記のような計算式で位置を算出する：
-         * ★ (動くラベルのX座標位置) = (ボタンを入れたスクロールビューの幅 ÷ ボタン数 ÷ 2) + (ボタンを入れたスクロールビューの幅 ÷ 分割数 × 現在のページ番号) - (ボタンに表示している文字の幅 ÷ 2)
+         * ★ (動くラベルのX座標位置) = (ボタンを入れたスクロールビューの幅 ÷ ボタン数 ÷ 2) + (ボタンを入れたスクロールビューの幅 ÷ スクロールビューの画面あたりのボタン表示数 × 現在のページ番号) - (ボタンに表示している文字の幅 ÷ 2)
          */
         let positionX: Int = Int(DeviceSize.screenWidthToInt() / buttonSeparateValue / 2) + Int(DeviceSize.screenWidthToInt() / buttonSeparateValue * index) - Int(charWidth / 2)
         return positionX
