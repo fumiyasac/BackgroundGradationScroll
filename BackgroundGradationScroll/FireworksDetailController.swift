@@ -15,10 +15,25 @@ import UIKit
 
 class FireworksDetailController: UITableViewController {
     
-    //ヘッダー内に設定したイメージビュー
-    var firstDisplayImage: UIImage? = nil
+    //ヘッダー内に設定した画像用変数（遷移元からの受け渡し用）
+    var displayImage: UIImage? = nil
 
-    //
+    //データ表示用のセルに関するenum定義
+    fileprivate enum CellIdentifier: Int {
+        case fireworksDetailCell = 0
+        case moreInfoCell        = 1
+        case linkInfoCell        = 2
+
+        static func getSectionCount() -> Int {
+            return 1
+        }
+
+        static func getAllCellCount() -> Int {
+            return [.fireworksDetailCell, .moreInfoCell, linkInfoCell].count
+        }
+    }
+
+    //スクロールビューのボタン定義
     fileprivate let buttonTitleList: [String] = [
         "イメージ画像1",
         "イメージ画像2",
@@ -28,16 +43,18 @@ class FireworksDetailController: UITableViewController {
         "イメージ画像6",
     ]
 
-    //
-    fileprivate let buttonSeparateValue = 3
-    fileprivate let buttonFont = UIFont(name: "Georgia-Bold", size: 11)!
-
     //バウンドするヘッダーを作成するためのメンバ変数
-    fileprivate var headerView: UIView!
+    fileprivate var targetHeaderView: UIView!
     fileprivate let kTableHeaderHeight: CGFloat = 280.0
 
-    //ギャラリー用の
+    //ヘッダー部分のImageView
     @IBOutlet weak var targetHeaderImageView: UIImageView!
+
+    //ヘッダー下部分にあるスクロールビューのボタン分割数
+    fileprivate let buttonSeparateValue = 3
+    
+    //ヘッダー下部分にあるスクロールビューのボタンのフォント定義
+    fileprivate let buttonFont = UIFont(name: "Georgia-Bold", size: 11)!
 
     //ヘッダー下部分にあるスクロールビュー
     @IBOutlet weak var targetHeaderScrollView: UIScrollView!
@@ -60,64 +77,46 @@ class FireworksDetailController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //UITableViewのセルの高さに関する定義をする
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 100000
 
-        //バウンドするヘッダー部分の定義をする
-        //targetHeaderView = tableView.tableHeaderView
-        headerView = tableView.tableHeaderView
-        tableView.tableHeaderView = nil
-        tableView.addSubview(headerView)
+        setupTableView()
+        setupTableViewHeader()
 
-        tableView.contentInset = UIEdgeInsets(top: kTableHeaderHeight, left: 0, bottom: 0, right: 0)
-        tableView.contentOffset = CGPoint(x: 0, y: -kTableHeaderHeight)
-        updateTableViewHeader()
-
-        //ヘッダー内に設定したイメージビューにGestureRecognizerをつける
-        targetHeaderImageView.image = firstDisplayImage
+        //ヘッダーの画像に関する初期設定
+        targetHeaderImageView.image = displayImage
     }
 
     //レイアウト処理が完了した際のライフサイクル
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
-        //
+        //ヘッダー内に内包されているScrollViewのレイアウトを設定する
         setupHeaderScrollViewLayout?()
     }
 
     /* MARK: - UITableViewDataSource - */
 
-    //セクション数
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return CellIdentifier.getSectionCount()
     }
 
-    //セクション内のセル数
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return CellIdentifier.getAllCellCount()
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        var targerCell: UITableViewCell?
-        
-        //TODO: セルをそれぞれのセクションごとに作成する
         switch indexPath.row {
-        case 0:
-            targerCell = tableView.dequeueReusableCustomCell(with: FireworksDetailCell.self)
-        case 1:
-            targerCell = tableView.dequeueReusableCustomCell(with: MoreInfoCell.self)
-        case 2:
-            targerCell = tableView.dequeueReusableCustomCell(with: LinkInfoCell.self)
+        case CellIdentifier.fireworksDetailCell.rawValue:
+            let fireworksDetailCell = tableView.dequeueReusableCustomCell(with: FireworksDetailCell.self)
+            return fireworksDetailCell
+        case CellIdentifier.moreInfoCell.rawValue:
+            let moreInfoCell = tableView.dequeueReusableCustomCell(with: MoreInfoCell.self)
+            return moreInfoCell
+        case CellIdentifier.linkInfoCell.rawValue:
+            let linkInfoCell = tableView.dequeueReusableCustomCell(with: LinkInfoCell.self)
+            return linkInfoCell
         default:
             fatalError()
         }
-
-        targerCell?.accessoryType = UITableViewCellAccessoryType.none
-        targerCell?.selectionStyle = UITableViewCellSelectionStyle.none
-        return targerCell!
     }
 
     /* MARK: - UIScrollViewDelegate - */
@@ -126,11 +125,9 @@ class FireworksDetailController: UITableViewController {
     //参考: http://qiita.com/KatagiriSo/items/323c23e49dc49165b43c
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-        //ヘッダー下部分にあるスクロールビューの場合とそうでない場合で処理を分ける
+        //ヘッダーをスクロールに応じて動かす ※ヘッダー下部分にあるスクロールビューの場合とそうでない場合で処理を分ける
         if scrollView != targetHeaderScrollView {
-
-            //ヘッダーをスクロールに応じて動かす
-            updateTableViewHeader()
+            setTableViewHeaderBounce()
         }
     }
 
@@ -140,7 +137,7 @@ class FireworksDetailController: UITableViewController {
     @IBAction func closeButtonAction(_ sender: UIButton) {
         presentingViewController?.dismiss(animated: true, completion: nil)
     }
-    
+
     /* MARK: - addTarget Functions - */
 
     //ボタンをタップした際に行われる処理
@@ -158,7 +155,29 @@ class FireworksDetailController: UITableViewController {
     
     /* MARK: - Fileprivate Functions - */
 
-    //スクロールビュー内へのボタン配置に関する設定をする
+    //UITableViewに関する定義をするメソッド
+    fileprivate func setupTableView() {
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 100000
+    }
+
+    //バウンドするヘッダー部分の定義をするメソッド
+    fileprivate func setupTableViewHeader() {
+        targetHeaderView = tableView.tableHeaderView
+        tableView.tableHeaderView = nil
+        tableView.addSubview(targetHeaderView)
+        setTableViewHeaderBounce()
+
+        tableView.contentInset = UIEdgeInsets(top: kTableHeaderHeight, left: 0, bottom: 0, right: 0)
+        tableView.contentOffset = CGPoint(x: 0, y: -kTableHeaderHeight)
+    }
+
+    //バウンドするヘッダー部分に定義をするメソッド
+    fileprivate func setupTableViewHeaderImage(index: Int = 0) {
+
+    }
+
+    //スクロールビュー内へのボタン配置に関する設定をするメソッド
     fileprivate func setupButtonsInHeaderScrollView() {
 
         //メインのスクロールビューの中にコンテンツ表示用のコンテナを一列に並べて配置する
@@ -174,13 +193,13 @@ class FireworksDetailController: UITableViewController {
         }
     }
 
-    //スクロールビュー内へのボタン配置に関する設定をする
+    //スクロールビュー内へのボタン配置に関する設定をするメソッド
     fileprivate func setupButtonInHeaderScrollView(buttonTitle: String, index: Int) {
         let buttonElement: UIButton = UIButton()
         buttonElement.frame = CGRect(
             x: CGFloat(DeviceSize.screenWidthToInt() / buttonSeparateValue * index),
             y: 0,
-            width: CGFloat(DeviceSize.screenWidthToInt() / 3),
+            width: CGFloat(DeviceSize.screenWidthToInt() / buttonSeparateValue),
             height: targetHeaderScrollView.frame.height
         )
         buttonElement.backgroundColor = UIColor.clear
@@ -192,7 +211,7 @@ class FireworksDetailController: UITableViewController {
         targetHeaderScrollView.addSubview(buttonElement)
     }
 
-    //スクロールビュー内への動くラベルに関するを設定をする
+    //スクロールビュー内への動くラベルに関するを設定をするメソッド
     fileprivate func setupMovingLabelInHeaderScrollView() {
 
         //動くラベルをスクロールビュー内へ追加する
@@ -204,7 +223,7 @@ class FireworksDetailController: UITableViewController {
         setMovingLabelPosition()
     }
     
-    //スクロールビュー内のサイズを設定する
+    //スクロールビュー内のサイズを設定するメソッド
     fileprivate func setupHeaderScrollViewContentSize() {
         targetHeaderScrollView.contentSize = CGSize(
             width: CGFloat(DeviceSize.screenWidthToInt() / buttonSeparateValue * buttonTitleList.count),
@@ -212,7 +231,7 @@ class FireworksDetailController: UITableViewController {
         )
     }
 
-    //スクロールビュー内の各プロパティ値を設定する
+    //スクロールビュー内の各プロパティ値を設定するメソッド
     fileprivate func setupHeaderScrollViewProperties() {
         targetHeaderScrollView.isPagingEnabled = false
         targetHeaderScrollView.isScrollEnabled = true
@@ -223,56 +242,45 @@ class FireworksDetailController: UITableViewController {
         targetHeaderScrollView.scrollsToTop = false
     }
 
-    //テーブルビューヘッダーの位置をスクロール量に合わせて変化させる
-    fileprivate func updateTableViewHeader() {
+    //テーブルビューヘッダーの位置をスクロール量に合わせて変化させるメソッド
+    fileprivate func setTableViewHeaderBounce() {
         var headerRect = CGRect(x: 0, y: -kTableHeaderHeight, width: tableView.frame.width, height: kTableHeaderHeight)
         if tableView.contentOffset.y < -kTableHeaderHeight {
             headerRect.origin.y = tableView.contentOffset.y
             headerRect.size.height = -tableView.contentOffset.y
         }
-        headerView.frame = headerRect
+        targetHeaderView.frame = headerRect
     }
 
-    //ボタンのスクロールビューをスライドさせる
+    //ボタンのスクロールビューをスライドさせるメソッド
     fileprivate func moveToButtonContentsScrollView(index: Int) {
         
         //Case1: ボタンを内包しているスクロールビューの位置変更をする
         if index > 0 && index < (buttonTitleList.count - 1) {
-            
-            scrollButtonOffsetX = Int(targetHeaderScrollView.frame.width) / 3 * (index - 1)
+            scrollButtonOffsetX = DeviceSize.screenWidthToInt() / buttonSeparateValue * (index - 1)
             
         //Case2: 一番最初のpage番号のときの移動量
         } else if index == 0 {
-            
             scrollButtonOffsetX = 0
-            
+
         //Case3: 一番最後のpage番号のときの移動量 ※(page % 分割数 + 1 = 分割数)の場合
         } else if index == (buttonTitleList.count - 1) && index % buttonSeparateValue == buttonSeparateValue - 1 {
-            
-            scrollButtonOffsetX = Int(targetHeaderScrollView.frame.width) * (buttonTitleList.count / 3 - 1)
-
-        //Case4: 一番最後のpage番号のときの移動量 ※(page % 分割数 + 1 ≠ 分割数)の場合
-        } else if index == (buttonTitleList.count - 1) && index % 3 != 2 {
-
-            scrollButtonOffsetX = Int(targetHeaderScrollView.frame.width) / 3 * (index - 2)
+            scrollButtonOffsetX = DeviceSize.screenWidthToInt() * (buttonTitleList.count / buttonSeparateValue - 1)
         }
 
         UIView.animate(withDuration: 0.26, delay: 0, options: [], animations: {
-            self.targetHeaderScrollView.contentOffset = CGPoint(
-                x: self.scrollButtonOffsetX,
-                y: 0
-            )
-        }, completion: nil)
+            self.targetHeaderScrollView.contentOffset = CGPoint(x: self.scrollButtonOffsetX, y: 0)
+        })
     }
 
-    //ボタンタップ時に動くラベルをスライドさせる
+    //ボタンタップ時に動くラベルをスライドさせるメソッド
     fileprivate func moveToCurrentButtonLabelButtonTapped(index: Int) {
         UIView.animate(withDuration: 0.26, delay: 0, options: [], animations: {
             self.setMovingLabelPosition(index: index)
         })
     }
 
-    //
+    //動くラベルの位置を決定するメソッド
     fileprivate func setMovingLabelPosition(index: Int = 0) {
 
         //ボタンのテキスト幅を取得する
@@ -283,8 +291,6 @@ class FireworksDetailController: UITableViewController {
         
         //動くラベルのScrollView内でのX座標を取得する
         let positionX = getMovingLabelPosX(
-            scrollViewLayoutWidth: DeviceSize.screenWidthToInt(),
-            separateValue: buttonSeparateValue,
             index: index,
             charWidth: buttonTextWidth
         )
@@ -307,18 +313,16 @@ class FireworksDetailController: UITableViewController {
     //ボタン表示テキストとスクロールビューの表示エリアから動くラベル（下線）のX座標を取得する
     /**
      * 引数は下記の通り：
-     * scrollViewLayoutWidth(Int型) : ボタンを入れたスクロールビューの幅
-     * separateValue(Int型)         : ボタンを入れたスクロールビューの幅で表示されるボタンの数
-     * page(Int型)                  : 現在のページ番号(0..n)
-     * charWidth(Int型)             : ボタンに表示している文字の幅
+     * page(Int型)      : 現在のページ番号(0..n)
+     * charWidth(Int型) : ボタンに表示している文字の幅
      */
-    fileprivate func getMovingLabelPosX(scrollViewLayoutWidth: Int, separateValue: Int, index: Int, charWidth: Int) -> Int {
+    fileprivate func getMovingLabelPosX(index: Int, charWidth: Int) -> Int {
         
         /**
          * 下記のような計算式で位置を算出する：
          * ★ (動くラベルのX座標位置) = (ボタンを入れたスクロールビューの幅 ÷ ボタン数 ÷ 2) + (ボタンを入れたスクロールビューの幅 ÷ 分割数 × 現在のページ番号) - (ボタンに表示している文字の幅 ÷ 2)
          */
-        let positionX: Int = Int(scrollViewLayoutWidth / separateValue / 2) + Int(Int(scrollViewLayoutWidth / 3) * index) - Int(charWidth / 2)
+        let positionX: Int = Int(DeviceSize.screenWidthToInt() / buttonSeparateValue / 2) + Int(DeviceSize.screenWidthToInt() / buttonSeparateValue * index) - Int(charWidth / 2)
         return positionX
     }
 
@@ -330,12 +334,12 @@ class FireworksDetailController: UITableViewController {
 
 extension FireworksDetailController: StoryboardInstantiatable {
 
-    //
+    //このViewControllerに対応するStoryboard名
     static var storyboardName: String {
         return "Detail"
     }
 
-    //
+    //このViewControllerに対応するViewControllerのIdentifier名
     static var viewControllerIdentifier: String? {
         return "FireworksDetailController"
     }

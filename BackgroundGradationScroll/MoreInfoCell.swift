@@ -25,10 +25,12 @@ class MoreInfoCell: UITableViewCell, CLLocationManagerDelegate, MKMapViewDelegat
         super.awakeFromNib()
         
         moreInfoMapView.delegate = self
+        setupCellInitialSetting()
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    //セルの初期設定に関するメソッド
+    fileprivate func setupCellInitialSetting() {
+        self.accessoryType  = UITableViewCellAccessoryType.none
+        self.selectionStyle = UITableViewCellSelectionStyle.none
     }
-
 }

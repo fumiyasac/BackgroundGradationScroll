@@ -17,6 +17,7 @@ class LinkInfoCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        setupCellInitialSetting()
     }
 
     //「Hotpepperの情報を見る」ボタン押下時のアクション
@@ -27,8 +28,9 @@ class LinkInfoCell: UITableViewCell {
     @IBAction func linkTabelogAction(_ sender: UIButton) {
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+    //セルの初期設定に関するメソッド
+    fileprivate func setupCellInitialSetting() {
+        self.accessoryType  = UITableViewCellAccessoryType.none
+        self.selectionStyle = UITableViewCellSelectionStyle.none
     }
-
 }

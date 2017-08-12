@@ -286,7 +286,7 @@ extension ViewController: UITableViewDataSource {
             let fireworksDetailController = FireworksDetailController.instantiate()
             
             //遷移先のヘッダー画像に遷移元の画像を設定してカスタムトランジションを利用して遷移する
-            fireworksDetailController.firstDisplayImage     = cell.imageImplView.image
+            fireworksDetailController.displayImage = cell.imageImplView.image
             fireworksDetailController.transitioningDelegate = self
             
             self.present(fireworksDetailController, animated: true, completion: nil)
