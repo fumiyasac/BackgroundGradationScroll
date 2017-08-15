@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "799F79E4ECED5A75B94C954EDD73FBBD"
+               BlueprintIdentifier = "3B7247482DDF23511C63522404F5D37B"
                BuildableName = "Pods_BackgroundGradationScroll.framework"
                BlueprintName = "Pods-BackgroundGradationScroll"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "799F79E4ECED5A75B94C954EDD73FBBD"
+            BlueprintIdentifier = "3B7247482DDF23511C63522404F5D37B"
             BuildableName = "Pods_BackgroundGradationScroll.framework"
             BlueprintName = "Pods-BackgroundGradationScroll"
             ReferencedContainer = "container:Pods.xcodeproj">

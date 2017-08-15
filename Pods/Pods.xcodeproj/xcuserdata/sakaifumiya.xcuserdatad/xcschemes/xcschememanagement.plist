@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>AlamofireImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-BackgroundGradationScroll.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -20,11 +25,6 @@
 			<false/>
 		</dict>
 		<key>RealmSwift.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>SDWebImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -42,27 +42,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>050C78A4F531BD71A4606315DB4ACFB2</key>
+		<key>01F13C21FFE2D5AD076CB84CD175EE21</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>37958BAC8256CD71B559F4469D7C2C21</key>
+		<key>15670738E7502FD2776D493E383D3CA5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4037CBCC0E7C036071633BEDA9DF258E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>6B1F4153E0D4A2610B2B676D05A9756E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>799F79E4ECED5A75B94C954EDD73FBBD</key>
+		<key>3B7247482DDF23511C63522404F5D37B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -72,7 +62,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B55295F96724B3294FD02F1A0207D2C5</key>
+		<key>9EFE4C70245EE2857D336B8B9FA4E825</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BA44E30F6F49E9633F286CE66858B25C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E23FB0A2DE3D99835E2DDE3F1BA4E018</key>
 		<dict>
 			<key>primary</key>
 			<true/>

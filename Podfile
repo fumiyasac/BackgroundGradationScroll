@@ -4,7 +4,7 @@ swift_version = '3.0'
 target 'BackgroundGradationScroll' do
   use_frameworks!
   pod 'SVProgressHUD', :git => 'https://github.com/SVProgressHUD/SVProgressHUD.git'
-  pod 'SDWebImage'
+  pod 'AlamofireImage'
   pod 'Alamofire'
   pod 'SwiftyJSON'
   pod 'RealmSwift'
