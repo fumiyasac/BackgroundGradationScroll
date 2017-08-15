@@ -9,7 +9,9 @@
 import UIKit
 
 /**
- * ヘッダーのバウンスに関する実装参考
+ * ヘッダーのバウンスに関する実装参考：
+ * 「Design Teardown: Stretchy Headers」
+ * → Swift2系で記載されたものをSwift3系に書き直して実装している
  * http://blog.matthewcheok.com/design-teardown-stretchy-headers/
  */
 

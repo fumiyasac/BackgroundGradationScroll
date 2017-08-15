@@ -28,7 +28,7 @@
             </objects>
             <point key="canvasLocation" x="-574" y="124"/>
         </scene>
-        <!--Fireworks Photos-->
+        <!--HANABI-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="BackgroundGradationScroll" customModuleProvider="target" sceneMemberID="viewController">
@@ -76,12 +76,12 @@
                             <constraint firstItem="BJn-jR-6qe" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="r4d-Eo-sLl"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Fireworks Photos" id="hyS-JD-1mh">
+                    <navigationItem key="navigationItem" title="HANABI" id="hyS-JD-1mh">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="KLr-d3-F8i">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JOW-gm-H2F">
                                 <rect key="frame" x="16" y="7" width="50" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                                 <state key="normal" title="≡ MENU">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -94,7 +94,7 @@
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4g8-wf-u1a">
                                 <rect key="frame" x="294" y="7" width="65" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                                 <state key="normal" title="▶︎ COLUMN">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
